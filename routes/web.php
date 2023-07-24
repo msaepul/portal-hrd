@@ -37,3 +37,4 @@ Route::post('/Masterdata/departemen', [DepartemenController::class, 'deptStore']
 
 //Loker
 Route::get('/loker', [LokerController::class, 'showListloker'])->name('loker');
+Route::get('/detail_loker', [LokerController::class, 'lokerdetail'])->name('loker_detail');
