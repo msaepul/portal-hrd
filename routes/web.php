@@ -42,3 +42,4 @@ Route::post('/Masterdata/cabang', [MasterDataController::class, 'cabStore'])->na
 Route::get('/loker', [LokerController::class, 'showListloker'])->name('loker');
 Route::get('/detail_loker', [LokerController::class, 'lokerdetail'])->name('loker_detail');
 Route::get('/loker/add', [LokerController::class, 'addLoker'])->name('addloker');
+Route::post('/loker/store', [LokerController::class, 'addLokerstore'])->name('addloker.store');

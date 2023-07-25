@@ -4,7 +4,8 @@
         <!-- Brand -->
         <div class="sidenav-header d-flex align-items-center">
             <a class="navbar-brand" href="{{ route('dashboard') }}">
-                <img src="../../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
+                <img src="../../assets/img/brand/logo jordan.png" style="width:100%; height:auto;" class="navbar-brand-img"
+                    alt="...">
             </a>
             <div class="ml-auto">
                 <!-- Sidenav toggler -->

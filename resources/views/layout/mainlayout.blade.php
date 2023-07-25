@@ -24,6 +24,7 @@
     <link rel="icon" href="{{ asset('assets/img/brand/favicon.png') }}" type="image/png">
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet">
     <!-- Icons -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/nucleo/css/nucleo.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}"
@@ -202,7 +203,7 @@
                                 </div>
                                 <!-- View all -->
                                 <a href="#!"
-                                    class="dropdown-item text-center text-primary font-weight-bold py-3">View all</a>
+                                    class="dropdown-item text-center text-warning font-weight-bold py-3">View all</a>
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -353,6 +354,10 @@
         <script src="{{ asset('assets/vendor/quill/dist/quill.min.js') }}"></script>
         <!-- Argon JS -->
         <script src="{{ asset('assets/js/argon.js?v=1.1.0') }}"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <!-- Include Select2 JS from CDN -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
 
 </body>

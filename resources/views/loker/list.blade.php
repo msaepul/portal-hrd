@@ -56,6 +56,7 @@
 
                         @include('modal.modaloker')
                     </div>
+
                     <div class="table-responsive py-4">
                         <table class="table table-flush" id="datatable-buttons">
                             <thead class="thead-light">
@@ -63,24 +64,32 @@
                                     <th>No</th>
                                     <th>Nama Departemen</th>
 
-                                    <th>Karyawan yang dibutuhkan</th>
-                                    <th>Jumlah Pelamar</th>
+                                    <th>Tanggal Dibuka</th>
+                                    <th>Tanggal Selesai</th>
 
+                                    <th>Persyaratan</th>
+                                    <th>status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
+                            @foreach ($lokers as $index => $loker)
+                                <tbody>
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $loker->id_cabang }}</td>
 
-                            <tbody>
-                                <tr>
-                                    <td>No</td>
-                                    <td>Nama Departemen</td>
+                                        <td>{{ $loker->start_date }}</td>
+                                        <td>{{ $loker->end_date }}</td>
+                                        <td> {!! $loker->require_job !!}</td>
+                                        <td> {{ $loker->status }}</td>
 
-                                    <td>Karyawan yang dibutuhkan</td>
-                                    <td>Jumlah Pelamar</td>
-
-                                    <td>Action</td>
-                                </tr>
-                            </tbody>
+                                        <td>
+                                            <button class="btn btn-primary">edit</button>
+                                            <button class="btn btn-danger">nonaktif</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            @endforeach
                         </table>
                     </div>
                 </div>
