@@ -26,4 +26,10 @@ class LokerController extends Controller
         $loker = Loker::where('status', '=', '1')->get();
         return view('loker.lokerdetail', compact('cabang', 'loker'));
     }
+
+    public function addLoker()
+    {
+        // $depts = Departemen::all();
+        return view('loker.addloker');
+    }
 }

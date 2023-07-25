@@ -3,7 +3,7 @@
     <div class="scrollbar-inner">
         <!-- Brand -->
         <div class="sidenav-header d-flex align-items-center">
-            <a class="navbar-brand" href="{{route('dashboard')}}">
+            <a class="navbar-brand" href="{{ route('dashboard') }}">
                 <img src="../../assets/img/brand/blue.png" class="navbar-brand-img" alt="...">
             </a>
             <div class="ml-auto">
@@ -25,7 +25,7 @@
                 <!-- Nav items -->
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('dashboard')}}">
+                        <a class="nav-link" href="{{ route('dashboard') }}">
                             <i class="ni ni-archive-2 text-green"></i>
                             <span class="nav-link-text">Dashbaord</span>
                         </a>
@@ -39,7 +39,7 @@
                         <div class="collapse show" id="navbar-dashboards">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="{{route('loker')}}" class="nav-link">Input Lowongan</a>
+                                    <a href="{{ route('loker') }}" class="nav-link">Input Lowongan</a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="../../pages/dashboards/alternative.html" class="nav-link">List
@@ -50,23 +50,29 @@
                     </li>
                 </ul>
                 <br>
-                 <!-- Heading -->
-                 <h6 class="navbar-heading p-0 text-muted">Master Data</h6>
-                <hr class="my-3">
+                <!-- Heading -->
+                <h6 class="navbar-heading p-0 text-muted">Master Data</h6>
+                <hr class="my-1">
                 <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" href="{{route('masterdata.dept')}}">
-                        <i class="ni ni-chart-pie-35 text-info"></i>
-                        <span class="nav-link-text">Departement</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="../../pages/calendar.html">
-                        <i class="ni ni-calendar-grid-58 text-red"></i>
-                        <span class="nav-link-text">Point Cek</span>
-                    </a>
-                </li>
-            </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('masterdata.cabang') }}">
+                            <i class="ni ni-chart-pie-35 text-info"></i>
+                            <span class="nav-link-text">Cabang</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('masterdata.dept') }}">
+                            <i class="ni ni-chart-pie-35 text-info"></i>
+                            <span class="nav-link-text">Departement</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../../pages/calendar.html">
+                            <i class="ni ni-calendar-grid-58 text-red"></i>
+                            <span class="nav-link-text">Point Cek</span>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>

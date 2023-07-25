@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DepartemenController;
+use App\Http\Controllers\MasterDataController;
 use App\Http\Controllers\LokerController;
 
 /*
@@ -32,9 +32,13 @@ Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard'
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //masterdata departemen
-Route::get('/Masterdata/departemen', [DepartemenController::class, 'showListDept'])->name('masterdata.dept');
-Route::post('/Masterdata/departemen', [DepartemenController::class, 'deptStore'])->name('masterdata.dept.action');
+Route::get('/Masterdata/departemen', [MasterDataController::class, 'showListDept'])->name('masterdata.dept');
+Route::post('/Masterdata/departemen', [MasterDataController::class, 'deptStore'])->name('masterdata.dept.action');
+//masterdata Cabang
+Route::get('/Masterdata/cabang', [MasterDataController::class, 'showListCabang'])->name('masterdata.cabang');
+Route::post('/Masterdata/cabang', [MasterDataController::class, 'cabStore'])->name('masterdata.cabang.action');
 
 //Loker
 Route::get('/loker', [LokerController::class, 'showListloker'])->name('loker');
 Route::get('/detail_loker', [LokerController::class, 'lokerdetail'])->name('loker_detail');
+Route::get('/loker/add', [LokerController::class, 'addLoker'])->name('addloker');

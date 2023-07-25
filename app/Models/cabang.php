@@ -11,5 +11,5 @@ class cabang extends Model
     protected $table = 'tb_cabang';
 
     // Definisikan atribut yang dapat diisi (fillable) oleh pengguna
-    protected $fillable = ['id', 'nama_cabang','pt','keterangan', 'created_at', 'deleted_at'];
+    protected $fillable = ['id', 'nama_cabang','pt','keterangan','alamat', 'created_at', 'deleted_at'];
 }
