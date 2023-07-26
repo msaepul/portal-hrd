@@ -32,7 +32,6 @@
         <div class="row">
             <div class="col">
                 <div class="card">
-                    <!-- Jika ada pesan error untuk departemen -->
                     @if ($errors->has('departemen'))
                         <div id="errorDepartemen" class="alert alert-danger">
                             {{ $errors->first('departemen') }}
@@ -45,17 +44,21 @@
                         </div>
                     @endif
 
+                    <!-- Jika ada pesan sukses -->
+                    @if (session('success'))
+                        <div id="successMessage" class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
+
                     <!-- Card header -->
                     <div class="card-header">
-                        {{-- <h3 class="mb-0">List Departemen</h3>
-              <p class="text-sm mb-0">
-            Masukan data departemen
-              </p> --}}
                         <a href="{{ route('addloker') }}" class="btn btn-primary"><i class="fas fa-plus-circle"></i>
                             Tambah</a>
 
                         @include('modal.modaloker')
                     </div>
+
 
                     <div class="table-responsive py-4">
                         <table class="table table-flush" id="datatable-buttons">
@@ -63,38 +66,56 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Nama Departemen</th>
-
                                     <th>Tanggal Dibuka</th>
                                     <th>Tanggal Selesai</th>
-
                                     <th>Persyaratan</th>
                                     <th>status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
-                            @foreach ($lokers as $index => $loker)
-                                <tbody>
+                            <tbody>
+                                @foreach ($lokers as $index => $loker)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
-                                        <td>{{ $loker->id_cabang }}</td>
-
+                                        <td>{{ getNameDept($loker->id_dept) }}</td>
                                         <td>{{ $loker->start_date }}</td>
                                         <td>{{ $loker->end_date }}</td>
-                                        <td> {!! $loker->require_job !!}</td>
-                                        <td> {{ $loker->status }}</td>
-
+                                        <td>{!! $loker->require_job !!}</td>
                                         <td>
-                                            <button class="btn btn-primary">edit</button>
-                                            <button class="btn btn-danger">nonaktif</button>
+                                            @if ($loker->status == 1)
+                                                <span class="badge badge-success">Aktif</span>
+                                            @else
+                                                <span class="badge badge-warning">Tidak aktif</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('loker.edit', $loker->id) }}"
+                                                class="btn btn-sm btn-primary"><i class="far fa-edit"
+                                                    style="color: #ffffff;"></i></a>
+                                            <a href="{{ route('loker.update', $loker->id) }}"
+                                                class="btn btn-sm btn-warning"><i class="fas fa-ban"
+                                                    style="color: #ffffff;"></i></a>
+
+                                            <!-- Form untuk menghapus data loker -->
+                                            <form action="{{ route('loker.delete', $loker->id) }}" method="POST"
+                                                style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"
+                                                        style="color: #ffffff;"></i></button>
+                                            </form>
                                         </td>
                                     </tr>
-                                </tbody>
-                            @endforeach
+                                @endforeach
+                            </tbody>
                         </table>
                     </div>
+
                 </div>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <!-- Script untuk mengatur auto-hide pada semua div alert -->
         <script>
@@ -114,5 +135,10 @@
                 autoHideAlert('errorCatatan');
             });
         </script>
-
+        <script>
+            // Fungsi untuk menghilangkan pesan sukses setelah 5 detik
+            setTimeout(function() {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 3000); // Waktu dalam milidetik (5000 ms = 5 detik)
+        </script>
     @endsection

@@ -68,16 +68,89 @@ class LokerController extends Controller
             'gender'=>$gender,
             'date_birth'=>$date_birth,
             'country'=>$country,
-            'profile_imge'=>$profile_image,
+            'profile_image'=>$profile_image,
             'cv'=>$cv,
             'tac'=>$tac,
-            'profile_image'=>$pf,
+
             'status'=>1
 
         ]);
 
         return redirect()->back()->with('success', 'Data berhasil disimpan!');
 
+    }
+
+     public function updateStatus(Request $request, $id)
+    {
+
+         // Ambil data Loker dari database berdasarkan $id
+    $loker = Loker::find($id);
+
+    $loker->status = $loker->status == 1 ? 0 : 1;
+
+    // Simpan perubahan ke database
+    $loker->save();
+
+        // Loker::create($request->all());
+        // // Membuat data Loker baru berdasarkan data yang diambil dari request
+
+        return redirect()->route('loker')->with('success', 'Data loker berhasil diupdate.');
+        // Melakukan redirect dan menyertakan pesan sukses
+    }
+
+    public function showEditloker($id)
+    {
+        $depts = Departemen::all();
+        $cabang = cabang::all();
+        $loker = Loker::findOrFail($id);
+        // Melakukan pengecekan apakah data dengan ID yang diberikan ditemukan atau tidak
+
+        return view('loker.editloker', compact('loker','depts','cabang'));
+        // Mengirimkan data loker ke view 'edit'
+    }
+    public function editLokerstore(Request $request, $id)
+{
+    // // Validasi input jika diperlukan
+    // $request->validate([
+    //     // ... Atur aturan validasi jika diperlukan ...
+    // ]);
+
+    // Dapatkan data loker berdasarkan ID
+    $loker = Loker::find($id);
+
+    // Ubah data loker berdasarkan input form
+    $loker->id_cabang = $request->input('id_cabang');
+    $loker->id_dept = $request->input('id_dept');
+    $loker->desc_job = $request->input('quill_content1');
+    $loker->require_job = $request->input('quill_content2');
+    $loker->start_date = Carbon::createFromFormat('Y-m-d', $request->input('start_date'));
+    $loker->end_date = Carbon::createFromFormat('Y-m-d', $request->input('end_date'));
+    $loker->resume = $request->input('resume', 0);
+    $loker->gender = $request->input('gender', 0);
+    $loker->date_birth = $request->input('date_birth', 0);
+    $loker->country = $request->input('country', 0);
+    $loker->profile_image = $request->input('profile_image', 0);
+    $loker->cv = $request->input('cv', 0);
+    $loker->tac = $request->input('tac', 0);
+    $loker->status = 1; // Jika ada data status, sesuaikan dengan input form yang sesuai
+
+    // dd($request);
+    // Simpan perubahan ke basis data
+    $loker->save();
+
+    return redirect()->back()->with('success', 'Data berhasil diperbarui!');
+}
+
+
+    public function deleteLoker($id)
+    {
+        $data = Loker::findOrFail($id);
+        $data->delete();
+
+        // Setelah menghapus data, Anda dapat melakukan tindakan lainnya,
+        // seperti mengirimkan respon atau mengalihkan pengguna ke halaman lain.
+
+        return redirect()->route('loker')->with('success', 'Data berhasil dihapus');
     }
 
 }

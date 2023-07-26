@@ -1,22 +1,22 @@
 <?php
 
 use App\Models\cabang;
+use App\Models\Departemen;
 
 use Illuminate\Support\Facades\Auth;
 
+if (!function_exists(function: 'getNameDept')) {
+    function getNameDept($idcabang)
+    {
 
-// if (!function_exists(function: 'cabang')) {
-//     function cabang()
-//     {
-//         $idcabang = Auth::user()->cabang;
-//         $arraycabang = Cabang::where('id', '=', "$idcabang")
-//             ->get()
-//             ->first();
-//         $cabang = $arraycabang->cabang;
+        $arraycabang = Departemen::where('id', '=', "$idcabang")
+            ->get()
+            ->first();
+        $cabang = $arraycabang->departemen;
 
-//         return "$cabang";
-//     }
-// }
+        return "$cabang";
+    }
+}
 if (!function_exists(function: 'getNameCabang')) {
     function getNameCabang($idcabang)
     {

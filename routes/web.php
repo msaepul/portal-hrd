@@ -43,3 +43,8 @@ Route::get('/loker', [LokerController::class, 'showListloker'])->name('loker');
 Route::get('/detail_loker', [LokerController::class, 'lokerdetail'])->name('loker_detail');
 Route::get('/loker/add', [LokerController::class, 'addLoker'])->name('addloker');
 Route::post('/loker/store', [LokerController::class, 'addLokerstore'])->name('addloker.store');
+Route::get('/loker/delete/{id}', [LokerController::class, 'deleteLoker'])->name('loker.delete');
+Route::get('/loker/updates/{id}', [LokerController::class, 'updatestatus'])->name('loker.update');
+Route::get('/loker/edit/{id}', [LokerController::class, 'showEditloker'])->name('loker.edit');
+Route::put('/loker/update/{id}', [LokerController::class, 'editLokerstore'])->name('loker.edit.action');
+
