@@ -67,3 +67,11 @@ if (!function_exists('getUserIDCabang')) {
         return $id;
     }
 }
+
+
+if (!function_exists('custom_str_limit')) {
+    function custom_str_limit($value, $limit = 100, $end = ' <strong style="color: #5e72e4;">Selengkapnya..</strong>')
+    {
+        return Illuminate\Support\Str::limit($value, $limit, $end);
+    }
+}

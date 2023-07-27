@@ -46,7 +46,9 @@
       fill: #8249109c; /* Gunakan kode warna cokelat (#964B00) */
     }
   </style>
-
+@php
+use Illuminate\Support\Str;
+@endphp
   <body>
     <!-- Navabr -->
     <nav id="navbar-main" class="navbar navbar-horizontal navbar-main navbar-expand-lg navbar-dark bg-transparent">

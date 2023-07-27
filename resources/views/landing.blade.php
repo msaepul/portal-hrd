@@ -68,7 +68,12 @@
                                             <i class="ni ni-check-bold"></i>
                                         </div>
                                         <h4 class="h3 text-primary text-uppercase">{{ getPTCabang($l->id_cabang) }}</h4>
-                                        <p class="description mt-3">{{ $l->desc_job }}</p>
+                                        <p class="description mt-3">
+                                            {!! custom_str_limit($l->desc_job) !!}
+                                        </p>
+
+
+
                                         <div>
                                             <span class="badge badge-pill badge-primary">bootstrap 4</span>
                                             <span class="badge badge-pill badge-primary">dashboard</span>
