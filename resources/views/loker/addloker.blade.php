@@ -158,13 +158,13 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="form-group">
-                                <label class="form-control-label" for="example3cols1Input">Start Date</label>
-                                <hr mt--1>
-                                <input type="text" class="form-control border-example" value=""
-                                    data-toggle="tags">
-                                <hr>
-                            </div>
+                            <label class="form-control-label" for="example2cols2Input">Skill yang diperlukan</label>
+                            <select name="college_id[]" multiple="multiple"
+                                class="form-control js-example-basic-multiple" data-toggle="select">
+                                @foreach ($depts as $d)
+                                    <option value="{{ $d->id }}">{{ $d->departemen }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <hr>
 
@@ -211,6 +211,9 @@
                 }
             });
         });
+    </script>
+    <script>
+        $('.js-example-basic-multiple').select2();
     </script>
 
 @endsection

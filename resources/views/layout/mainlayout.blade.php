@@ -38,13 +38,13 @@
     <link rel="stylesheet" href="{{ asset('assets/css/argon.css?v=1.1.0') }}" type="text/css">
 
 
-
 </head>
 <style>
     .border-example {
         border: 2px solid #007bff;
         /* Ketebalan 2px dan warna biru (#007bff) */
     }
+
 </style>
 
 <body>
