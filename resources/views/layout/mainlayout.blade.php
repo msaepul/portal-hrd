@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}"
         type="text/css">
     <!-- Page plugins -->
+    <link rel="stylesheet" href="{{ asset('assets/vendor/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet"
         href="{{ asset('assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}">
@@ -39,6 +40,12 @@
 
 
 </head>
+<style>
+    .border-example {
+        border: 2px solid #007bff;
+        /* Ketebalan 2px dan warna biru (#007bff) */
+    }
+</style>
 
 <body>
 
@@ -338,6 +345,8 @@
         <script src="{{ asset('assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
         <script src="{{ asset('assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
         <!-- Optional JS -->
+        <script src="{{ asset('assets/vendor/select2/dist/js/select2.min.js') }}"></script>
+        <script src="{{ asset('assets/vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
         <script src="{{ asset('assets/vendor/chart.js/dist/Chart.min.js') }}"></script>
         <script src="{{ asset('assets/vendor/chart.js/dist/Chart.extension.js') }}"></script>
 

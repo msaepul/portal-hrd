@@ -39,6 +39,7 @@
                                 </div>
                                 <input class="form-control" name="keterangan" id="keterangan" placeholder="Padalarang"
                                     value="{{ old('keterangan') }}">
+                                <input type="hidden" name="status" id="status" value="1">
                             </div>
                         </div>
                         <div class="col-md-6">

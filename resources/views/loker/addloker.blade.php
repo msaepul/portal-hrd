@@ -55,7 +55,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="example3cols3Input">Departemen</label>
-                                <select class="form-control" id="exampleFormControlSelect1" name="id_dept" id="id_dept">
+                                <select class="form-control" id="exampleFormControlSelect1" name="id_dept" id="id_dept"
+                                    data-toggle="select">
                                     @foreach ($depts as $d)
                                         <option value="{{ $d->id }}">{{ $d->departemen }}</option>
                                     @endforeach
@@ -154,6 +155,15 @@
                                     </div>
                                 </div>
 
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="form-control-label" for="example3cols1Input">Start Date</label>
+                                <hr mt--1>
+                                <input type="text" class="form-control border-example" value=""
+                                    data-toggle="tags">
+                                <hr>
                             </div>
                         </div>
                         <hr>

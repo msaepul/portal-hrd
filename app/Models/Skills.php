@@ -5,11 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class cabang extends Model
-{
-    use HasFactory;
-    protected $table = 'tb_cabang';
+class Skills extends Model
+{    use HasFactory;
+    protected $table = 'tb_skills';
 
     // Definisikan atribut yang dapat diisi (fillable) oleh pengguna
-    protected $fillable = ['id', 'nama_cabang','pt','keterangan','alamat','status','created_at', 'deleted_at'];
+    protected $fillable = ['id', 'nama_skill','catatan','status'];
 }

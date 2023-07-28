@@ -37,6 +37,13 @@ Route::post('/Masterdata/departemen', [MasterDataController::class, 'deptStore']
 //masterdata Cabang
 Route::get('/Masterdata/cabang', [MasterDataController::class, 'showListCabang'])->name('masterdata.cabang');
 Route::post('/Masterdata/cabang', [MasterDataController::class, 'cabStore'])->name('masterdata.cabang.action');
+//masterdata skill
+Route::get('/Masterdata/skill', [MasterDataController::class, 'showListskill'])->name('masterdata.skill');
+Route::post('/Masterdata/skill', [MasterDataController::class, 'skillStore'])->name('masterdata.skill.action');
+
+Route::get('/Masterdata/skill/updateStatus/{id}', [MasterDataController::class, 'updateStatus'])->defaults('model', 'Skills')->name('skills.updateStatus');
+Route::get('/Masterdata/Cabang/updateStatus/{id}', [MasterDataController::class, 'updateStatus'])->defaults('model', 'Cabang')->name('Cabang.updateStatus');
+Route::get('/Masterdata/Departemen/updateStatus/{id}', [MasterDataController::class, 'updateStatus'])->defaults('model', 'Departemen')->name('Departemen.updateStatus');
 
 //Loker
 Route::get('/loker', [LokerController::class, 'showListloker'])->name('loker');

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Departemen;
 use App\Models\cabang;
+use App\Models\Skills;
 use Illuminate\Support\Facades\Validator;
 class MasterDataController extends Controller
 {
@@ -20,12 +21,14 @@ class MasterDataController extends Controller
        $validatedData = $request->validate([
         'departemen' => 'required|string|max:255|unique:tb_dept,departemen',
         'catatan' => 'nullable|string',
+        'status' => 'string',
     ], [
         'departemen.required' => 'Departemen harus diisi.',
         'departemen.string' => 'Departemen harus berupa teks.',
         'departemen.max' => 'Departemen tidak boleh lebih dari :max karakter.',
         'departemen.unique' => 'Departemen sudah ada dalam database.',
         'catatan.string' => 'Catatan harus berupa teks.',
+        'status.string' => 'Catatan harus berupa teks.',
     ]);
 
     // Buat instance dari model Departemen dengan data yang divalidasi
@@ -47,6 +50,7 @@ class MasterDataController extends Controller
         $pt = $request->input('pt');
         $keterangan = $request->input('keterangan');
         $alamat = $request->input('alamat');
+        $status = $request->input('status');
 
         // Manual validation
         $validator = Validator::make($request->all(), [
@@ -77,10 +81,80 @@ class MasterDataController extends Controller
         'pt' => $pt,
         'keterangan' => $keterangan,
         'alamat' => $alamat,
+        'status' => $status,
         ]);
 
 
     // Redirect ke halaman yang sesuai setelah menyimpan data
     return redirect()->route('masterdata.cabang');
     }
+
+    public function showListskill()
+    {
+        $skills = Skills::all();
+        return view('masterdata.skill',compact('skills'));
+    }
+
+    public function skillStore(Request $request)
+    {
+       // Validasi data yang dikirimkan oleh form
+       $validatedData = $request->validate([
+        'nama_skill' => 'required|string|max:255|unique:tb_skills,nama_skill',
+        'catatan' => 'nullable|string',
+        'status'=>'numeric'
+    ], [
+        'nama_skill.required' => 'nama_skill harus diisi.',
+        'nama_skill.string' => 'nama_skill harus berupa teks.',
+        'nama_skill.max' => 'nama_skill tidak boleh lebih dari :max karakter.',
+        'nama_skill.unique' => 'nama_skill sudah ada dalam database.',
+        'catatan.string' => 'Catatan harus berupa teks.',
+        'status.numeric' => ' status berupa teks.',
+    ]);
+     // Buat instance dari model skill dengan data yang divalidasi
+     $skill = Skills::create($validatedData);
+
+     // Redirect ke halaman yang sesuai setelah menyimpan data
+     return redirect()->route('masterdata.skill');
+    }
+
+    public function updateStatus(Request $request, $id, $model)
+    {
+        // Mendefinisikan nama kelas model berdasarkan parameter $model
+        $modelClass = null;
+        if ($model === 'Skills') {
+            $modelClass = Skills::class;
+        } elseif ($model === 'Cabang') {
+            $modelClass = Cabang::class;
+        } elseif ($model === 'Departemen') {
+            $modelClass = Departemen::class;
+        }
+
+        if ($modelClass) {
+            // Ambil data dari database berdasarkan $id
+            $data = $modelClass::find($id);
+
+            // Pastikan data ditemukan sebelum melakukan update
+            if ($data) {
+                // Toggle status (0 menjadi 1 atau sebaliknya)
+                $data->status = $data->status == 1 ? 0 : 1;
+
+                // Simpan perubahan ke database
+                $data->save();
+
+                // Redirect ke halaman yang sesuai dengan model yang digunakan
+                $route = ($model === 'Skills') ? 'masterdata.skill' : (($model === 'Cabang') ? 'masterdata.cabang' : 'masterdata.dept');
+
+                return redirect()->route($route)->with('success', 'Data berhasil diupdate.');
+            } else {
+                // Redirect dengan pesan error jika data tidak ditemukan
+                return redirect()->back()->with('error', 'Data tidak ditemukan.');
+            }
+        } else {
+            // Redirect dengan pesan error jika model tidak dikenali
+            return redirect()->back()->with('error', 'Model tidak dikenali.');
+        }
+    }
+
+
+
 }

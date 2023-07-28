@@ -11,5 +11,5 @@ class Departemen extends Model
     protected $table = 'tb_dept';
 
     // Definisikan atribut yang dapat diisi (fillable) oleh pengguna
-    protected $fillable = ['id', 'departemen','catatan', 'created_at', 'deleted_at'];
+    protected $fillable = ['id', 'departemen','catatan','status', 'created_at', 'deleted_at'];
 }

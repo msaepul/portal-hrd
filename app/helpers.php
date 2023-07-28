@@ -21,7 +21,7 @@ if (!function_exists(function: 'getNameCabang')) {
     function getNameCabang($idcabang)
     {
 
-        $arraycabang = cabang::where('id_cabang', '=', "$idcabang")
+        $arraycabang = cabang::where('id', '=', "$idcabang")
             ->get()
             ->first();
         $cabang = $arraycabang->keterangan;
@@ -33,7 +33,7 @@ if (!function_exists(function: 'getSingkatanCabang')) {
     function getSingkatanCabang($idcabang)
     {
 
-        $arraycabang = cabang::where('id_cabang', '=', "$idcabang")
+        $arraycabang = cabang::where('id', '=', "$idcabang")
             ->get()
             ->first();
         $cabang = $arraycabang->nama_cabang;
@@ -45,7 +45,7 @@ if (!function_exists(function: 'getPTCabang')) {
     function getPTCabang($idcabang)
     {
 
-        $arraycabang = cabang::where('id_cabang', '=', "$idcabang")
+        $arraycabang = cabang::where('id', '=', "$idcabang")
             ->get()
             ->first();
         $cabang = $arraycabang->pt;

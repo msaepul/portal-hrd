@@ -68,6 +68,12 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('masterdata.skill') }}">
+                            <i class="ni ni-chart-pie-35 text-info"></i>
+                            <span class="nav-link-text">Skill</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="../../pages/calendar.html">
                             <i class="ni ni-calendar-grid-58 text-red"></i>
                             <span class="nav-link-text">Point Cek</span>

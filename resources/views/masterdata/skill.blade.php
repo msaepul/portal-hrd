@@ -1,6 +1,6 @@
 @extends('layout.mainlayout')
 
-@section('title', 'Master Data Cabang')
+@section('title', 'Skill List')
 
 @section('content')
     <!-- Header -->
@@ -51,53 +51,48 @@
               <p class="text-sm mb-0">
             Masukan data departemen
               </p> --}}
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#modal-cabang"><i
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#modal-skill"><i
                                 class="fas fa-plus-circle"></i> Tambah</button>
-
-                        @include('modal.modalcabang')
+                        <button class="btn btn-warning"><i class="fas fa-plus-circle"></i> Loker</button>
+                        @include('modal.modalskill')
                     </div>
                     <div class="table-responsive py-4">
                         <table class="table table-flush" id="datatable-buttons">
                             <thead class="thead-light">
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama PT</th>
-                                    <th>Lokasi</th>
-                                    <th>Alamat Perusahaan</th>
-                                    <th>Singkatan</th>
+                                    <th>Nama Skills</th>
+                                    <th>Catatan</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
 
                             <tbody>
-                                @foreach ($cabang as $index => $cab)
+                                @foreach ($skills as $index => $skill)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
-                                        <td>{{ $cab->pt }}</td>
-                                        <td>{{ $cab->keterangan }}</td>
-                                        <td>{{ $cab->alamat }}</td>
-                                        <td>{{ $cab->nama_cabang }}</td>
+                                        <td>{{ $skill->nama_skill }}</td>
+                                        <td>{{ $skill->catatan }}</td>
                                         <td>
-                                            @if ($cab->status == 1)
+                                            @if ($skill->status == 1)
                                                 <span class="badge badge-success">Aktif</span>
                                             @else
                                                 <span class="badge badge-warning">Tidak aktif</span>
                                             @endif
                                         </td>
                                         <td>
-                                            <a href="{{ route('Cabang.updateStatus', ['id' => $cab->id, 'model' => 'Cabang']) }}"
-                                                class="btn btn-sm btn-warning">
-                                                <i class="fas fa-ban" style="color: #ffffff;"></i>
+                                            <a href="{{ route('skills.updateStatus', ['id' => $skill->id, 'model' => 'Skills']) }}"
+                                                class="btn btn-sm btn-warning"> <i class="fas fa-ban"
+                                                    style="color: #ffffff;"></i>
                                             </a>
-
 
 
                                             <!-- Form untuk menghapus data loker -->
                                             {{-- <form action="{{ route('loker.delete', $loker->id) }}" method="POST"
-                            style="display: inline;">
-                            @csrf
-                            @method('DELETE') --}}
+                                                style="display: inline;">
+                                                @csrf
+                                                @method('DELETE') --}}
                                             <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"
                                                     style="color: #ffffff;"></i></button>
                                             {{-- </form> --}}

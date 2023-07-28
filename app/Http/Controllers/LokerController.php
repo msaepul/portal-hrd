@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\cabang;
 use App\Models\Departemen;
 use App\Models\Loker;
+use App\Models\Skills;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -12,7 +13,7 @@ class LokerController extends Controller
 {
     public function index()
     {
-        $cabang = cabang::all();
+        $cabang = cabang::where('status', '=', '1')->get();
         $loker = Loker::where('status', '=', '1')->get();
         return view('landing', compact('cabang', 'loker'));
     }
@@ -33,7 +34,8 @@ class LokerController extends Controller
     {
         $depts = Departemen::all();
         $cabang = cabang::all();
-        return view('loker.addloker', compact('depts','cabang'));
+        $skills = Skills::all();
+        return view('loker.addloker', compact('depts','cabang','skills'));
     }
 
     public function addLokerstore(Request $request)

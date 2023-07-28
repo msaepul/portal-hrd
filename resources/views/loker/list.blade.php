@@ -65,6 +65,7 @@
                             <thead class="thead-light">
                                 <tr>
                                     <th>No</th>
+                                    <th>ID Loker</th>
                                     <th>Nama Departemen</th>
                                     <th>Tanggal Dibuka</th>
                                     <th>Tanggal Selesai</th>
@@ -77,6 +78,7 @@
                                 @foreach ($lokers as $index => $loker)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
+                                        <td>{{ $loker->id_loker }}</td>
                                         <td>{{ getNameDept($loker->id_dept) }}</td>
                                         <td>{{ $loker->start_date }}</td>
                                         <td>{{ $loker->end_date }}</td>
