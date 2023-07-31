@@ -12,7 +12,7 @@
                         <div class="row align-items-center">
                             <div class="col-lg-6">
                                 <div class="pr-5">
-                                    <h1 class="display-2 text-white font-weight-bold mb-0">Argon Dashboard PRO</h1>
+                                    <h1 class="display-2 text-white font-weight-bold mb-0">Nama PT</h1>
                                     <h2 class="display-4 text-white font-weight-light">A beautiful premium dashboard for
                                         Bootstrap 4.</h2>
                                     <p class="text-white mt-4">Argon perfectly combines reusable HTML and modular CSS with a
@@ -31,34 +31,69 @@
                     </div>
                 </div>
             </div>
-            {{-- <div class="separator separator-bottom separator-skew zindex-100">
+            <div class="separator separator-bottom separator-skew zindex-100">
                 <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
                     xmlns="http://www.w3.org/2000/svg">
                     <polygon class="fill-brown" points="2560 0 2560 100 0 100"></polygon>
                 </svg>
-            </div> --}}
+            </div>
         </div>
     </div>
-    <section class="py-7 section-nucleo-icons bg-white overflow-hidden">
+    <section class="py-100 section-nucleo-icons bg-white overflow-hidden">
         <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-8 text-center">
-                    <br>
-                    <h2 class="display-3" style="color: #2e0e00">Pilih Lokasi Cabang Perusahaan</h2>
-                    <p class="lead">
-                    <div class="row d-flex justify-content-between">
-                        <div class="row"></div>
-                        @foreach ($cabang as $cab)
-                            <div class="col">
-                                <button class="btn btn-outline-warning btn-block btn-oval btn-md"
-                                    data-target="{{ $cab->keterangan }}">{{ $cab->keterangan }}</button>
-                            </div>
-                        @endforeach
-                        </p>
-
-                    </div>
-                    <br>
+            <div class="row">
+                <div class="container">
                     <div class="row">
+                        <div class="col-lg-4">
+                            <br>
+                            <h3 style="color: #2e0e00">Data Pribadi</h3>
+                        </div>
+                        <div class="col-lg-8">
+                            <br>
+                            <div class="form-row">
+                                <div class="col-md-12 mb-3">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="validationDefault01"
+                                            placeholder="Nama Lengkap" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="validationDefault01"
+                                            placeholder="Email" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" id="validationDefault01"
+                                            placeholder="No Telephon" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <br>
+                            <h3 style="color: #2e0e00">Data Pribadi</h3>
+                        </div>
+                        <div class="col-lg-8">
+                            <br>
+                            <button class="btn btn-primary btn-block mt-3 mb-5 mt-lg-0">Masukan Lamaran</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <br>
+                            <h3 style="color: #2e0e00">Data Pribadi</h3>
+                        </div>
+                        <div class="col-lg-8">
+                            <br>
+                            <button class="btn btn-primary btn-block mt-3 mb-5 mt-lg-0">Masukan Lamaran</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <br>
+                <hr>
+                {{-- <div class="row">
                         @foreach ($loker as $l)
                             <div class="col-lg-6">
                                 <div class="card card-lift--hover shadow border-0" id="{{ getNameCabang($l->id_cabang) }}">
@@ -85,8 +120,8 @@
 
                             </div>
                         @endforeach
-                    </div>
+                    </div> --}}
 
-                </div>
+            </div>
     </section>
 @endsection

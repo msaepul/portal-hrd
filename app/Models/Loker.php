@@ -27,6 +27,7 @@ class Loker extends Model
         'cv',
         'tac',
         'status',
+        'id_skill',
     ];
     public static function generateNomor()
     {

@@ -56,7 +56,7 @@
                         <a href="{{ route('addloker') }}" class="btn btn-primary"><i class="fas fa-plus-circle"></i>
                             Tambah</a>
 
-                        @include('modal.modaloker')
+                        {{-- @include('modal.modaloker') --}}
                     </div>
 
 

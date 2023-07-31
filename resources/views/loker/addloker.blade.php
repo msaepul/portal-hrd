@@ -159,10 +159,10 @@
                         </div>
                         <div class="col-md-12">
                             <label class="form-control-label" for="example2cols2Input">Skill yang diperlukan</label>
-                            <select name="college_id[]" multiple="multiple"
-                                class="form-control js-example-basic-multiple" data-toggle="select">
-                                @foreach ($depts as $d)
-                                    <option value="{{ $d->id }}">{{ $d->departemen }}</option>
+                            <select name="id_skill[]" multiple="multiple" class="form-control js-example-basic-multiple"
+                                data-toggle="select">
+                                @foreach ($skills as $skill)
+                                    <option value="{{ $skill->id }}">{{ $skill->nama_skill }}</option>
                                 @endforeach
                             </select>
                         </div>

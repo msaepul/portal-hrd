@@ -17,11 +17,13 @@ use App\Http\Controllers\LokerController;
 */
 
 Route::get('/', [LokerController::class, 'index'])->name('index');
+Route::get('/lokers/{id}', [LokerController::class, 'detailLandingLoker'])->name('landingloker');
+Route::get('/lokers/{id}/apply', [LokerController::class, 'applyLandingLoker'])->name('applyloker');
+
 
 //auth
 Route::get('/register', [AuthController::class, 'showregisterform'])->name('register');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
-
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
 

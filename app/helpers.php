@@ -2,6 +2,7 @@
 
 use App\Models\cabang;
 use App\Models\Departemen;
+use App\Models\Skills;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -75,3 +76,17 @@ if (!function_exists('custom_str_limit')) {
         return Illuminate\Support\Str::limit($value, $limit, $end);
     }
 }
+
+if (!function_exists('getNameSkill')) {
+    function getNameSkill($id)
+    {
+        $arrayskill = Skills::where('id', '=', $id)->first();
+
+        if ($arrayskill) {
+            return $arrayskill->nama_skill;
+        } else {
+            return null; // Nilai default jika skill tidak ditemukan
+        }
+    }
+}
+

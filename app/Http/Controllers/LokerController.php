@@ -13,9 +13,31 @@ class LokerController extends Controller
 {
     public function index()
     {
+
         $cabang = cabang::where('status', '=', '1')->get();
         $loker = Loker::where('status', '=', '1')->get();
+          // Ekstrak nilai id_skill menjadi array untuk setiap data Loker
+        foreach ($loker as $l) {
+            $idSkillArray = explode(',', $l->id_skill);
+            $l->id_skill = $idSkillArray; // Simpan hasil ekstraksi sebagai array di model Loker
+        }
         return view('landing', compact('cabang', 'loker'));
+    }
+    public function detailLandingLoker($id)
+    {
+        $loker = Loker::findOrFail($id);
+        $idSkillArray = explode(',', $loker->id_skill);
+        $loker->id_skill = $idSkillArray; // Simpan hasil ekstraksi sebagai array di model Loker
+
+        return view('loker.lokerlandingdetail', compact('loker'));
+    }
+    public function applyLandingLoker($id)
+    {
+        $loker = Loker::findOrFail($id);
+        $idSkillArray = explode(',', $loker->id_skill);
+        $loker->id_skill = $idSkillArray; // Simpan hasil ekstraksi sebagai array di model Loker
+
+        return view('loker.lokerapply', compact('loker'));
     }
 
     public function showListLoker()
@@ -27,7 +49,8 @@ class LokerController extends Controller
     {
         $cabang = cabang::all();
         $loker = Loker::where('status', '=', '1')->get();
-        return view('loker.lokerdetail', compact('cabang', 'loker'));
+        $skills = Skills::where('status', '=', '1')->get();
+        return view('loker.lokerdetail', compact('cabang', 'loker', 'skills'));
     }
 
     public function addLoker()
@@ -56,6 +79,8 @@ class LokerController extends Controller
         $cv = $request->input('cv', 0); // Mengambil nilai dari input checkbox7 atau kembalikan 0 jika tidak ada
         $pf = $request->input('pf', 0); // Mengambil nilai dari input checkbox7 atau kembalikan 0 jika tidak ada
         $generate = Loker::generateNomor();
+        $selectedOptions = $request->input('id_skill');
+        $joinedOptions = implode(',', $selectedOptions);
 
         // // Simpan data ke basis data
         Loker::create([
@@ -73,6 +98,7 @@ class LokerController extends Controller
             'profile_image'=>$profile_image,
             'cv'=>$cv,
             'tac'=>$tac,
+            'id_skill'=>$joinedOptions,
 
             'status'=>1
 
@@ -85,19 +111,19 @@ class LokerController extends Controller
      public function updateStatus(Request $request, $id)
     {
 
-         // Ambil data Loker dari database berdasarkan $id
-    $loker = Loker::find($id);
+            // Ambil data Loker dari database berdasarkan $id
+        $loker = Loker::find($id);
 
-    $loker->status = $loker->status == 1 ? 0 : 1;
+        $loker->status = $loker->status == 1 ? 0 : 1;
 
-    // Simpan perubahan ke database
-    $loker->save();
+        // Simpan perubahan ke database
+        $loker->save();
 
-        // Loker::create($request->all());
-        // // Membuat data Loker baru berdasarkan data yang diambil dari request
+            // Loker::create($request->all());
+            // // Membuat data Loker baru berdasarkan data yang diambil dari request
 
-        return redirect()->route('loker')->with('success', 'Data loker berhasil diupdate.');
-        // Melakukan redirect dan menyertakan pesan sukses
+            return redirect()->route('loker')->with('success', 'Data loker berhasil diupdate.');
+            // Melakukan redirect dan menyertakan pesan sukses
     }
 
     public function showEditloker($id)
