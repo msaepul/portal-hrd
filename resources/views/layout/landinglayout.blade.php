@@ -51,6 +51,27 @@
         fill: #8249109c;
         /* Gunakan kode warna cokelat (#964B00) */
     }
+
+    .header-body {
+        position: relative;
+        /* Membuat posisi elemen menjadi relatif untuk mempengaruhi child element */
+    }
+
+    .header-text {
+        background-color: rgba(0, 0, 0, 0.633);
+        /* Warna latar belakang dengan opasitas */
+        padding: 10px;
+        /* Menambahkan ruang di sekitar teks */
+        border-radius: 5px;
+        /* Mengatur tingkat kebulatan sudut */
+    }
+
+    .header-text h1,
+    .header-text h2,
+    .header-text p {
+        color: #ffffff;
+        /* Warna teks menjadi putih */
+    }
 </style>
 @php
     use Illuminate\Support\Str;

@@ -54,6 +54,18 @@ if (!function_exists(function: 'getPTCabang')) {
         return "$cabang";
     }
 }
+if (!function_exists(function: 'getAlamatCabang')) {
+    function getAlamatCabang($idcabang)
+    {
+
+        $arraycabang = cabang::where('id', '=', "$idcabang")
+            ->get()
+            ->first();
+        $cabang = $arraycabang->alamat;
+
+        return "$cabang";
+    }
+}
 if (!function_exists('getUserId')) {
     function getUserId()
     {

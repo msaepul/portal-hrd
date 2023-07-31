@@ -7,35 +7,28 @@
         <!-- Header -->
         <div class="header bg-white pt-5 pb-7">
             <div class="container">
-                <div class="container">
-                    <div class="header-body">
-                        <div class="row align-items-center">
-                            <div class="col-lg-6">
-                                <div class="pr-5">
-                                    <h1 class="display-2 text-white font-weight-bold mb-0">Nama PT</h1>
-                                    <h2 class="display-4 text-white font-weight-light">A beautiful premium dashboard for
-                                        Bootstrap 4.</h2>
-                                    <p class="text-white mt-4">Argon perfectly combines reusable HTML and modular CSS with a
-                                        modern styling and beautiful markup throughout each HTML template in the pack.</p>
-                                    <div class="mt-5">
-                                        <a href="./pages/dashboards/dashboard.html" class="btn btn-neutral my-2">Explore
-                                            Dashboard</a>
-                                        <a href="https://www.creative-tim.com/product/argon-dashboard-pro"
-                                            class="btn btn-default my-2">Purchase now</a>
-                                    </div>
+                <div class="header-body">
+                    <div class="row align-items-center">
+                        <div class="col-lg-8">
+                            <div class="pr-5 header-text">
+                                <div class="mt-7">
+                                </div>
+                                <!-- Tambahkan class "header-text" pada elemen yang ingin diberikan efek transparan -->
+                                <h1 class="display-2 text-white font-weight-bold mb-0">
+                                    {{ getPTCabang($loker->id_cabang) }}
+                                </h1>
+                                <h2 class="display-4 text-white font-weight-light">
+                                    {{ getAlamatCabang($loker->id_cabang) }}
+                                </h2>
+                                <p class="text-white mt-4">Jordan Bakery selalu berupaya Mengusahakan kesejahteraan
+                                    karyawan dan memberkati lingkungan di manapun berada..</p>
+
+                                <div class="mt-7">
                                 </div>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
-            </div>
-            <div class="separator separator-bottom separator-skew zindex-100">
-                <svg x="0" y="0" viewBox="0 0 2560 100" preserveAspectRatio="none" version="1.1"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <polygon class="fill-brown" points="2560 0 2560 100 0 100"></polygon>
-                </svg>
             </div>
         </div>
     </div>
@@ -48,7 +41,7 @@
                             <br>
                             <h4 class="display-4" style="color: #2e0e00">{{ getNameDept($loker->id_dept) }}</h4>
                             <p class="text-muted text-capitalize">
-                                by: {{ getPTCabang($loker->id_cabang) }}
+                                Lokasi: {{ getPTCabang($loker->id_cabang) }}
                             </p>
                             <p class="display-5" style="color: #2e0e00; font-weight: bold;">
                                 Skills

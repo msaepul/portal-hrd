@@ -29,7 +29,7 @@ class LokerController extends Controller
         $idSkillArray = explode(',', $loker->id_skill);
         $loker->id_skill = $idSkillArray; // Simpan hasil ekstraksi sebagai array di model Loker
 
-        return view('loker.lokerlandingdetail', compact('loker'));
+        return view('landing.lokerlandingdetail', compact('loker'));
     }
     public function applyLandingLoker($id)
     {
@@ -37,7 +37,7 @@ class LokerController extends Controller
         $idSkillArray = explode(',', $loker->id_skill);
         $loker->id_skill = $idSkillArray; // Simpan hasil ekstraksi sebagai array di model Loker
 
-        return view('loker.lokerapply', compact('loker'));
+        return view('landing.lokerapply', compact('loker'));
     }
 
     public function showListLoker()
