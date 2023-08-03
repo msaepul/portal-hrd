@@ -55,8 +55,9 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="form-control-label" for="example3cols3Input">Departemen</label>
-                                <select class="form-control" id="exampleFormControlSelect1" name="id_dept" id="id_dept"
+                                <select class="form-control" id="id_dept" name="id_dept" id="id_dept"
                                     data-toggle="select">
+                                    <option value="" disabled>Pilih Departement</option>
                                     @foreach ($depts as $d)
                                         <option value="{{ $d->id }}">{{ $d->departemen }}</option>
                                     @endforeach

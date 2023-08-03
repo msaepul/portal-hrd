@@ -19,6 +19,8 @@ use App\Http\Controllers\LokerController;
 Route::get('/', [LokerController::class, 'index'])->name('index');
 Route::get('/lokers/{id}', [LokerController::class, 'detailLandingLoker'])->name('landingloker');
 Route::get('/lokers/{id}/apply', [LokerController::class, 'applyLandingLoker'])->name('applyloker');
+Route::post('getkota', [LokerController::class, 'getkota'])->name('getkota');
+Route::post('getkecamatan', [LokerController::class, 'getkecamatan'])->name('getkecamatan');
 
 
 //auth

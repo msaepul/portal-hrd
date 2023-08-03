@@ -6,6 +6,9 @@ use App\Models\cabang;
 use App\Models\Departemen;
 use App\Models\Loker;
 use App\Models\Skills;
+use App\Models\Province;
+use App\Models\District;
+use App\Models\Regency;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 
@@ -34,10 +37,35 @@ class LokerController extends Controller
     public function applyLandingLoker($id)
     {
         $loker = Loker::findOrFail($id);
+        $provinsi = Province::all();
         $idSkillArray = explode(',', $loker->id_skill);
         $loker->id_skill = $idSkillArray; // Simpan hasil ekstraksi sebagai array di model Loker
 
-        return view('landing.lokerapply', compact('loker'));
+        return view('landing.lokerapply', compact('loker','provinsi'));
+    }
+
+    public function getkota(request $request){
+        $id_provinsi = $request->id_provinsi;
+
+        $kotas = Regency::where('province_id',$id_provinsi)->get();
+        $option = "<option disabled selected>Pilih Kota</option>";
+        foreach ($kotas as $kota){
+            $option.="<option value='$kota->id'> $kota->name </option>";
+        }
+        echo $option; //respone ke View loker apply (get data kota ketika select provinsi)
+
+    }
+    public function getkecamatan(request $request){
+        $id_kota = $request->id_kota;
+
+        $kecamatans = District::where('regency_id',$id_kota)->get();
+        $option = "<option disabled selected>Pilih Kecamatan</option>";
+        foreach ($kecamatans as $kecamatan){
+            $option.="<option value='$kecamatan->id'> $kecamatan->name </option>";
+        }
+        echo $option; //respone ke View loker apply (get data kecamatan ketika select kota)
+
+
     }
 
     public function showListLoker()

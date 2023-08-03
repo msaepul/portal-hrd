@@ -37,11 +37,11 @@
                 <div class="container">
                     <hr>
                     <div class="row">
-                        <div class="col-lg-4">
+                        <div class="col-lg-3">
                             <br>
                             <h3 style="color: #2e0e00">Data Pribadi</h3>
                         </div>
-                        <div class="col-lg-8">
+                        <div class="col-lg-9">
                             <br>
                             <div class="form-row">
                                 <div class="col-md-12 mb-3">
@@ -100,30 +100,40 @@
                                         <label class="form-control-label" for="validationCustom01">Tempat, Tanggal
                                             Lahir</label>
                                         <input type="date" class="form-control mb-3" id="validationCustom01"
-                                            placeholder="First name" value="Mark" required>
+                                            placeholder="First name" required>
                                         <div class="form-row">
                                             <div class="col-md-4 mb-3">
+                                                <label class="form-control-label" for="provinsi">Provinsi</label>
+                                                <select class="form-control" id="pro" name="provinsi"
+                                                    data-toggle="select" required>
+                                                    <option value="" disabled selected>Pilih Provinsi</option>
+                                                    @foreach ($provinsi as $p)
+                                                        <option value="{{ $p->id }}">{{ $p->name }}</option>
+                                                    @endforeach
+                                                </select>
 
-                                                <input type="text" class="form-control" id="validationCustom01"
-                                                    placeholder="First name" value="Mark" required>
+                                            </div>
+                                            <div class="col-md-4 mb-3">
+                                                <label class="form-control-label" for="kota">kota</label>
+                                                <select class="form-control" id="kota" name="kota"
+                                                    data-toggle="select" required>
+                                                    {{-- <option value="">Pilih Kota</option> --}}
+                                                    {{-- @foreach ($kota as $k)
+                                                        <option value="{{ $k->id }}">{{ $k->name }}</option>
+                                                    @endforeach --}}
+                                                </select>
                                                 <div class="valid-feedback">
                                                     Looks good!
                                                 </div>
                                             </div>
                                             <div class="col-md-4 mb-3">
+                                                <label class="form-control-label" for="kecamatan">kecamatan</label>
+                                                <select class="form-control" id="kecamatan" name="kecamatan"
+                                                    data-toggle="select" required>
 
-                                                <input type="text" class="form-control" id="validationCustom02"
-                                                    placeholder="Last name" value="Otto" required>
+                                                </select>
                                                 <div class="valid-feedback">
                                                     Looks good!
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4 mb-3">
-
-                                                <input type="text" class="form-control" id="validationCustomUsername"
-                                                    placeholder="Username" aria-describedby="inputGroupPrepend" required>
-                                                <div class="invalid-feedback">
-                                                    Please choose a username.
                                                 </div>
                                             </div>
                                         </div>
@@ -283,4 +293,7 @@
 
         </div>
     </section>
+
+
+
 @endsection

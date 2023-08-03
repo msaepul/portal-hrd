@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Start your development with a Dashboard for Bootstrap 4.">
     <meta name="author" content="Creative Tim">
-    <title>Argon Dashboard PRO - Premium Bootstrap 4 Admin Template</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
+    <title>Argon Dashboard PRO - Premium Bootstrap 4 Admin Template
+    </title>
     <!-- Favicon -->
     <link rel="icon" href="{{ asset('assets/img/brand/favicon.png') }}" type="image/png">
     <!-- Fonts -->
@@ -15,6 +19,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/@fortawesome/fontawesome-free/css/all.min.css') }}"
         type="text/css">
     <!-- Page plugins -->
+    <link rel="stylesheet" href="{{ asset('assets/vendor/select2/dist/css/select2.min.css') }}">
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/argon.css?v=1.1.0') }}" type="text/css">
 
@@ -138,6 +143,12 @@
         </div>
     </footer>
     <!-- Argon Scripts -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"></script>
+
     <!-- Core -->
     <script src="{{ asset('assets/vendor/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
@@ -145,16 +156,71 @@
     <script src="{{ asset('assets/vendor/jquery.scrollbar/jquery.scrollbar.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/jquery-scroll-lock/dist/jquery-scrollLock.min.js') }}"></script>
     <!-- Optional JS -->
+    <!-- Page plugins -->
+    <script src="{{ asset('assets/vendor/select2/dist/js/select2.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/onscreen/dist/on-screen.umd.min.js') }}"></script>
     <!-- Argon JS -->
     <script src="{{ asset('assets/js/argon.js?v=1.1.0') }}"></script>
     <!-- Demo JS - remove this in your project -->
     <script src="{{ asset('assets/js/demo.min.js') }}"></script>
-    <!-- Tautkan Bootstrap JS dan Popper.js untuk beberapa komponen Bootstrap yang membutuhkan JavaScript -->
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <!-- Tautkan Bootstrap JS dan Popper.js untuk beberapa komponen Bootstrap yang membutuhkan JavaScript -->
+    {{-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> --}}
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.9/dist/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(function() {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $('#pro').on('change', function() {
+                let id_provinsi = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('getkota') }}",
+                    data: {
+                        id_provinsi: id_provinsi
+                    },
+                    cache: false,
+                    success: function(response) {
+                        // Lakukan sesuatu dengan data response
+                        // Contoh: Mengisi data ke dalam elemen dengan ID "kota"
+                        $('#kota').html(response);
+                        $('#kecamatan').html('');
+
+                    },
+                    error: function(data) {
+                        console.log('error', data);
+                    },
+                });
+            });
+
+            $('#kota').on('change', function() {
+                let id_kota = $(this).val();
+                $.ajax({
+                    type: 'POST',
+                    url: "{{ route('getkecamatan') }}",
+                    data: {
+                        id_kota: id_kota
+                    },
+                    cache: false,
+                    success: function(response) {
+                        // Lakukan sesuatu dengan data response
+                        // Contoh: Mengisi data ke dalam elemen dengan ID "kota"
+                        $('#kecamatan').html(response);
+                    },
+                    error: function(data) {
+                        console.log('error', data);
+                    },
+                });
+            });
+        });
+    </script>
 
     <script>
         // Fungsi untuk menampilkan div card yang sesuai ketika tombol diklik
@@ -181,6 +247,8 @@
         // Tampilkan card pertama secara default
         showCard('PADALARANG');
     </script>
+
+
 </body>
 
 </html>
