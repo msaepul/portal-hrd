@@ -155,11 +155,11 @@
                     @if ($loker->resume === 1)
                         <hr>
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <br>
                                 <h3 style="color: #2e0e00">CV atau Resume</h3>
                             </div>
-                            <div class="col-lg-8">
+                            <div class="col-lg-9">
 
                                 <div class="form-row">
                                     <div class="col-md-4 mb-3">
@@ -174,11 +174,11 @@
                     @if ($loker->cv === 1)
                         <hr>
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <br>
                                 <h3 style="color: #2e0e00">Cover Letter</h3>
                             </div>
-                            <div class="col-lg-8">
+                            <div class="col-lg-9">
 
                                 <div class="form-row">
                                     <div class="col-md-12 mb-3">
@@ -193,11 +193,11 @@
                     @if ($loker->tac === 1)
                         <hr>
                         <div class="row">
-                            <div class="col-lg-4">
+                            <div class="col-lg-3">
                                 <br>
                                 <h3 style="color: #2e0e00">Syarat dan Ketentuan</h3>
                             </div>
-                            <div class="col-lg-8">
+                            <div class="col-lg-9">
 
                                 <div class="form-row">
                                     <div class="col-md-12 mb-3">

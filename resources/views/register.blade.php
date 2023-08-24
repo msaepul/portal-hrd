@@ -133,6 +133,14 @@
         <div class="form-group">
             <div class="input-group input-group-merge input-group-alternative mb-3">
                 <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
+                </div>
+                <input class="form-control" placeholder="08XXXXXX" type="nomor" id="nomor" name="nomor">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="input-group input-group-merge input-group-alternative mb-3">
+                <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-email-83"></i></span>
                 </div>
                 <input class="form-control" placeholder="Email" type="email" id="email" name="email">

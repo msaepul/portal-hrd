@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MasterDataController;
 use App\Http\Controllers\LokerController;
+use App\Http\Controllers\Notif;
 
 /*
 |--------------------------------------------------------------------------
@@ -59,3 +60,6 @@ Route::get('/loker/updates/{id}', [LokerController::class, 'updatestatus'])->nam
 Route::get('/loker/edit/{id}', [LokerController::class, 'showEditloker'])->name('loker.edit');
 Route::put('/loker/update/{id}', [LokerController::class, 'editLokerstore'])->name('loker.edit.action');
 
+
+
+Route::get('/notif', [Notif::class, 'sendWhatsApp'])->name('addloker.store');

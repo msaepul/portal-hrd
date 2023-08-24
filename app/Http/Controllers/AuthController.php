@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Hash;
 
 
 use Illuminate\Http\Request;
@@ -61,16 +62,24 @@ class AuthController extends Controller
             'password' => 'required|string|min:8',
         ]);
 
+        // Generate OTP
+        $otp = mt_rand(100000, 999999);
+
+        // Simpan OTP dalam session
+        Session::put('otp', $otp);
+
+        // Kirim OTP ke nomor telepon pengguna (misalnya melalui layanan WhatsApp)
+
         $user = new User();
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = bcrypt($request->password);
-        $user->status = 0;
+        $user->password = Hash::make($request->password);
+        $user->status = 0; // Menyimpan status akun, misalnya 0 untuk belum diverifikasi
         $user->save();
 
         Auth::login($user);
 
-        return redirect()->route('login');
+        return redirect()->route('verify.otp');
     }
 
 }
