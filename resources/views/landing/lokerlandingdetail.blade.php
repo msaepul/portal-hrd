@@ -62,9 +62,13 @@
                         </div>
                         <div class="col-lg-3">
                             <br>
-                            <a href="{{ route('applyloker', $loker->id) }}"
-                                class="btn btn-primary btn-block mt-3 mb-5 mt-lg-0">Masukan
-                                Lamaran</a>
+                            <a href="{{ Auth::check() ? route('applyloker', $loker->id) : '#' }}"
+                                class="btn btn-primary btn-block mt-3 mb-5 mt-lg-0"
+                                onclick="{{ Auth::check() ? '' : 'showLoginAlert()' }}">
+                                Masukkan Lamaran
+                            </a>
+
+
                         </div>
                     </div>
                 </div>
@@ -102,4 +106,22 @@
 
             </div>
     </section>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="{{ asset('vendor/sweetalert/sweetalert.all.js') }}"></script>
+    <script>
+        function showLoginAlert() {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Peringatan',
+                text: 'Anda harus daftar terlebih dahulu untuk melamar pekerjaan.',
+                confirmButtonText: 'OK'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = "{{ route('register') }}";
+                }
+            });
+        }
+    </script>
+
 @endsection

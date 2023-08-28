@@ -90,17 +90,14 @@
                                                 class="btn btn-sm btn-warning">
                                                 <i class="fas fa-ban" style="color: #ffffff;"></i>
                                             </a>
-
-
-
                                             <!-- Form untuk menghapus data loker -->
-                                            {{-- <form action="{{ route('loker.delete', $loker->id) }}" method="POST"
-                            style="display: inline;">
-                            @csrf
-                            @method('DELETE') --}}
-                                            <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"
-                                                    style="color: #ffffff;"></i></button>
-                                            {{-- </form> --}}
+                                            <form action="{{ route('masterdata.cabang.delete', $cab->id) }}" method="POST"
+                                                style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"
+                                                        style="color: #ffffff;"></i></button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

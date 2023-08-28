@@ -1,6 +1,6 @@
 @extends('layout.mainlayout')
 
-@section('title', 'Skill List')
+@section('title', 'Detail_Wo')
 
 @section('content')
     <!-- Header -->
@@ -9,7 +9,7 @@
             <div class="header-body">
                 <div class="row align-items-center py-4">
                     <div class="col-lg-6 col-7">
-                        <h6 class="h2 text-white d-inline-block mb-0">Datatables</h6>
+                        <h6 class="h2 text-white d-inline-block mb-0">Lowonga Kerja</h6>
                         <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
                             <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
@@ -32,8 +32,7 @@
         <div class="row">
             <div class="col">
                 <div class="card">
-                    <!-- Jika ada pesan error untuk departemen -->
-                    @if ($errors->has('departemen'))
+                    {{-- @if ($errors->has('departemen'))
                         <div id="errorDepartemen" class="alert alert-danger">
                             {{ $errors->first('departemen') }}
                         </div>
@@ -45,65 +44,56 @@
                         </div>
                     @endif
 
+                    <!-- Jika ada pesan sukses -->
+                    @if (session('success'))
+                        <div id="successMessage" class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif --}}
+
                     <!-- Card header -->
-                    <div class="card-header">
-                        {{-- <h3 class="mb-0">List Departemen</h3>
-              <p class="text-sm mb-0">
-            Masukan data departemen
-              </p> --}}
-                        <button class="btn btn-primary" data-toggle="modal" data-target="#modal-skill"><i
-                                class="fas fa-plus-circle"></i> Tambah</button>
-                        <button class="btn btn-warning"><i class="fas fa-plus-circle"></i> Loker</button>
-                        @include('modal.modalskill')
-                    </div>
+                    {{-- <div class="card-header">
+                        <a href="{{ route('addloker') }}" class="btn btn-primary"><i class="fas fa-plus-circle"></i>
+                            Tambah</a>
+                    </div> --}}
+
+
                     <div class="table-responsive py-4">
                         <table class="table table-flush" id="datatable-buttons">
                             <thead class="thead-light">
                                 <tr>
                                     <th>No</th>
-                                    <th>Nama Skills</th>
-                                    <th>Catatan</th>
-                                    <th>Status</th>
+                                    <th>ID Loker</th>
+                                    <th>Nama User</th>
+                                    <th>TTL</th>
+                                    <th>Resume</th>
+                                    <th>CV</th>
+                                    <th>status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
-
                             <tbody>
-                                @foreach ($skills as $index => $skill)
-                                    <tr>
-                                        <td>{{ $index + 1 }}</td>
-                                        <td>{{ $skill->nama_skill }}</td>
-                                        <td>{{ $skill->catatan }}</td>
-                                        <td>
-                                            @if ($skill->status == 1)
-                                                <span class="badge badge-success">Aktif</span>
-                                            @else
-                                                <span class="badge badge-warning">Tidak aktif</span>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a href="{{ route('skills.updateStatus', ['id' => $skill->id, 'model' => 'Skills']) }}"
-                                                class="btn btn-sm btn-warning"> <i class="fas fa-ban"
-                                                    style="color: #ffffff;"></i>
-                                            </a>
 
+                                <tr>
+                                    <td>No</td>
+                                    <td>ID Loker</td>
+                                    <td>Nama User</td>
+                                    <td>TTL</td>
+                                    <td>Resume</td>
+                                    <td>CV</td>
+                                    <td>status</td>
+                                    <td>Action</td>
+                                </tr>
 
-                                            <form action="{{ route('masterdata.skill.delete', $skill->id) }}" method="POST"
-                                                style="display: inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm btn-danger"><i class="fas fa-trash"
-                                                        style="color: #ffffff;"></i></button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
                             </tbody>
                         </table>
                     </div>
+
                 </div>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <!-- Script untuk mengatur auto-hide pada semua div alert -->
         <script>
@@ -123,5 +113,10 @@
                 autoHideAlert('errorCatatan');
             });
         </script>
-
+        <script>
+            // Fungsi untuk menghilangkan pesan sukses setelah 5 detik
+            setTimeout(function() {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 3000); // Waktu dalam milidetik (5000 ms = 5 detik)
+        </script>
     @endsection

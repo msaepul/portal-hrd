@@ -37,6 +37,18 @@ class MasterDataController extends Controller
     // Redirect ke halaman yang sesuai setelah menyimpan data
     return redirect()->route('masterdata.dept');
     }
+
+    public function deletedept($id)
+    {
+        $data = Departemen::findOrFail($id);
+        $data->delete();
+
+        // Setelah menghapus data, Anda dapat melakukan tindakan lainnya,
+        // seperti mengirimkan respon atau mengalihkan pengguna ke halaman lain.
+
+        return redirect()->route('masterdata.departemen')->with('success', 'Data berhasil dihapus');
+    }
+
     public function showListCabang()
     {
         $cabang = cabang::all();
@@ -88,6 +100,16 @@ class MasterDataController extends Controller
     // Redirect ke halaman yang sesuai setelah menyimpan data
     return redirect()->route('masterdata.cabang');
     }
+    public function deletecabang($id)
+    {
+        $data = Cabang::findOrFail($id);
+        $data->delete();
+
+        // Setelah menghapus data, Anda dapat melakukan tindakan lainnya,
+        // seperti mengirimkan respon atau mengalihkan pengguna ke halaman lain.
+
+        return redirect()->route('masterdata.cabang')->with('success', 'Data berhasil dihapus');
+    }
 
     public function showListskill()
     {
@@ -115,6 +137,16 @@ class MasterDataController extends Controller
 
      // Redirect ke halaman yang sesuai setelah menyimpan data
      return redirect()->route('masterdata.skill');
+    }
+    public function deleteskill($id)
+    {
+        $data = Skills::findOrFail($id);
+        $data->delete();
+
+        // Setelah menghapus data, Anda dapat melakukan tindakan lainnya,
+        // seperti mengirimkan respon atau mengalihkan pengguna ke halaman lain.
+
+        return redirect()->route('masterdata.skill')->with('success', 'Data berhasil dihapus');
     }
 
     public function updateStatus(Request $request, $id, $model)

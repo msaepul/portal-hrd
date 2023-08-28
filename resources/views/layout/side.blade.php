@@ -43,7 +43,7 @@
                                     <a href="{{ route('loker') }}" class="nav-link">Input Lowongan</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="../../pages/dashboards/alternative.html" class="nav-link">List
+                                    <a href="{{ route('loker.listapply') }}" class="nav-link">List
                                         Pendaftar</a>
                                 </li>
                             </ul>

@@ -31,9 +31,11 @@
     <!-- Page plugins -->
     <link rel="stylesheet" href="{{ asset('assets/vendor/select2/dist/css/select2.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-bs4/css/dataTables.bootstrap4.min.css') }}">
+
     <link rel="stylesheet"
         href="{{ asset('assets/vendor/datatables.net-buttons-bs4/css/buttons.bootstrap4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/datatables.net-select-bs4/css/select.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/sweetalert2/dist/sweetalert2.min.css') }}">
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{ asset('assets/css/argon.css?v=1.1.0') }}" type="text/css">
 
@@ -44,7 +46,6 @@
         border: 2px solid #007bff;
         /* Ketebalan 2px dan warna biru (#007bff) */
     }
-
 </style>
 
 <body>
@@ -349,6 +350,7 @@
         <script src="{{ asset('assets/vendor/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
         <script src="{{ asset('assets/vendor/chart.js/dist/Chart.min.js') }}"></script>
         <script src="{{ asset('assets/vendor/chart.js/dist/Chart.extension.js') }}"></script>
+        <script src="{{ asset('assets/vendor/sweetalert2/dist/sweetalert2.min.js') }}"></script>
 
         <!--data table-->
         <script src="{{ asset('assets/vendor/datatables.net/js/jquery.dataTables.min.js') }}"></script>

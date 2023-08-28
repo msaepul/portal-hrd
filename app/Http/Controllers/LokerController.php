@@ -11,6 +11,7 @@ use App\Models\District;
 use App\Models\Regency;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class LokerController extends Controller
 {
@@ -19,12 +20,13 @@ class LokerController extends Controller
 
         $cabang = cabang::where('status', '=', '1')->get();
         $loker = Loker::where('status', '=', '1')->get();
+        $user= Auth::user();
           // Ekstrak nilai id_skill menjadi array untuk setiap data Loker
         foreach ($loker as $l) {
             $idSkillArray = explode(',', $l->id_skill);
             $l->id_skill = $idSkillArray; // Simpan hasil ekstraksi sebagai array di model Loker
         }
-        return view('landing', compact('cabang', 'loker'));
+        return view('landing', compact('cabang', 'loker','user'));
     }
     public function detailLandingLoker($id)
     {
@@ -40,8 +42,8 @@ class LokerController extends Controller
         $provinsi = Province::all();
         $idSkillArray = explode(',', $loker->id_skill);
         $loker->id_skill = $idSkillArray; // Simpan hasil ekstraksi sebagai array di model Loker
-
-        return view('landing.lokerapply', compact('loker','provinsi'));
+        $user= Auth::user();
+        return view('landing.lokerapply', compact('loker','provinsi','user'));
     }
 
     public function getkota(request $request){
@@ -207,6 +209,12 @@ class LokerController extends Controller
         // seperti mengirimkan respon atau mengalihkan pengguna ke halaman lain.
 
         return redirect()->route('loker')->with('success', 'Data berhasil dihapus');
+    }
+
+    public function showListApply()
+    {
+        $lokers=Loker::where('id_cabang','=',getUserIDCabang())->get();
+        return view('loker.listapply',compact('lokers'));
     }
 
 }

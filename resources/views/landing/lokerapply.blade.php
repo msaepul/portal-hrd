@@ -32,177 +32,173 @@
         </div>
     </div>
     <section class="py-100 section-nucleo-icons bg-white overflow-hidden">
-        <div class="container">
-            <div class="row">
-                <div class="container">
-                    <hr>
-                    <div class="row">
-                        <div class="col-lg-3">
-                            <br>
-                            <h3 style="color: #2e0e00">Data Pribadi</h3>
-                        </div>
-                        <div class="col-lg-9">
-                            <br>
-                            <div class="form-row">
-                                <div class="col-md-12 mb-3">
-                                    <div class="form-row">
-                                        <div class="col-md-12 mb-3">
-                                            <label class="form-control-label" for="validationCustom01">Nama Lengkap</label>
-                                            <input type="text" class="form-control" id="validationCustom01"
-                                                placeholder="First name" required>
-                                            <div class="valid-feedback">
-                                                Looks good!
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 mb-3">
-                                            <label class="form-control-label" for="validationCustom01">E-mail</label>
-                                            <input type="email" class="form-control" id="validationCustom01"
-                                                placeholder="Alamat Email" required>
-                                            <div class="valid-feedback">
-                                                Looks good!
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12 mb-3">
-                                            <label class="form-control-label" for="validationCustom01">Nomor
-                                                Telephon / HP</label>
-                                            <input type="text" class="form-control" id="validationCustom01"
-                                                placeholder="Nomor" required>
-                                            <div class="valid-feedback">
-                                                Looks good!
-                                            </div>
-                                        </div>
-
-                                    </div>
-                                    @if ($loker->gender === 1)
-                                        <label class="form-control-label" for="validationCustom01">Jenis Kelamin</label>
-                                        <div class="row">
-
-                                            <div class="custom-control custom-checkbox mb-3 ml-3">
-                                                <input class="custom-control-input" id="gender" name="gender"
-                                                    type="checkbox" value="1">
-                                                <label class="custom-control-label" for="gender">Gender</label>
-                                            </div>
-                                            <div class="custom-control custom-checkbox mb-3 ml-3">
-                                                <!-- Tambahkan class "ml-3" di sini -->
-                                                <input class="custom-control-input" id="date_birth" name="date_birth"
-                                                    type="checkbox" value="1">
-                                                <label class="custom-control-label" for="date_birth">Date Of Birth</label>
-                                            </div>
-                                            <div class="custom-control custom-checkbox mb-3 ml-3">
-                                                <!-- Tambahkan class "ml-3" di sini -->
-                                                <input class="custom-control-input" id="country" name="country"
-                                                    type="checkbox" value="1">
-                                                <label class="custom-control-label" for="country">Country</label>
-                                            </div>
-                                        </div>
-                                    @endif
-                                    @if ($loker->date_birth === 1)
-                                        <label class="form-control-label" for="validationCustom01">Tempat, Tanggal
-                                            Lahir</label>
-                                        <input type="date" class="form-control mb-3" id="validationCustom01"
-                                            placeholder="First name" required>
+        <form action="{{ route('addloker.store') }}" method="POST">
+            @csrf
+            <div class="container">
+                <div class="row">
+                    <div class="container">
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <br>
+                                <h3 style="color: #2e0e00">Data Pribadi</h3>
+                            </div>
+                            <div class="col-lg-9">
+                                <br>
+                                <div class="form-row">
+                                    <div class="col-md-12 mb-3">
                                         <div class="form-row">
-                                            <div class="col-md-4 mb-3">
-                                                <label class="form-control-label" for="provinsi">Provinsi</label>
-                                                <select class="form-control" id="pro" name="provinsi"
-                                                    data-toggle="select" required>
-                                                    <option value="" disabled selected>Pilih Provinsi</option>
-                                                    @foreach ($provinsi as $p)
-                                                        <option value="{{ $p->id }}">{{ $p->name }}</option>
-                                                    @endforeach
-                                                </select>
-
+                                            <div class="col-md-12 mb-3">
+                                                <label class="form-control-label" for="validationCustom01">Nama
+                                                    Lengkap</label>
+                                                <input type="text" class="form-control" id="validationCustom01"
+                                                    value="{{ $user->name }}" placeholder="First name" disabled required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
                                             </div>
-                                            <div class="col-md-4 mb-3">
-                                                <label class="form-control-label" for="kota">kota</label>
-                                                <select class="form-control" id="kota" name="kota"
-                                                    data-toggle="select" required>
-                                                    {{-- <option value="">Pilih Kota</option> --}}
-                                                    {{-- @foreach ($kota as $k)
+                                            <div class="col-md-12 mb-3">
+                                                <label class="form-control-label" for="validationCustom01">E-mail</label>
+                                                <input type="email" class="form-control" id="validationCustom01"
+                                                    placeholder="Alamat Email" value="{{ $user->email }}" disabled
+                                                    required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 mb-3">
+                                                <label class="form-control-label" for="validationCustom01">Nomor
+                                                    Telephon / HP</label>
+                                                <input type="text" class="form-control" id="validationCustom01"
+                                                    placeholder="Nomor" value="{{ $user->nomor }}" disabled required>
+                                                <div class="valid-feedback">
+                                                    Looks good!
+                                                </div>
+                                            </div>
+                                        </div>
+                                        @if ($loker->gender === 1)
+                                            <label class="form-control-label" for="validationCustom01">Jenis Kelamin</label>
+                                            <div class="row">
+                                                <div class="custom-control custom-radio mb-3 ml-3">
+                                                    <input class="custom-control-input" id="lakilaki" name="jenis_kelamin"
+                                                        type="radio" value="laki-laki">
+                                                    <label class="custom-control-label" for="lakilaki">Laki-laki</label>
+                                                </div>
+                                                <div class="custom-control custom-radio mb-3 ml-3">
+                                                    <input class="custom-control-input" id="perempuan" name="jenis_kelamin"
+                                                        type="radio" value="perempuan">
+                                                    <label class="custom-control-label" for="perempuan">Perempuan</label>
+                                                </div>
+                                            </div>
+                                        @endif
+                                        @if ($loker->date_birth === 1)
+                                            <label class="form-control-label" for="validationCustom01">Tempat, Tanggal
+                                                Lahir</label>
+                                            <input type="date" class="form-control mb-3" id="validationCustom01"
+                                                placeholder="First name" required>
+                                            <div class="form-row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label class="form-control-label" for="provinsi">Provinsi</label>
+                                                    <select class="form-control" id="pro" name="provinsi"
+                                                        data-toggle="select" required>
+                                                        <option value="" disabled selected>Pilih Provinsi</option>
+                                                        @foreach ($provinsi as $p)
+                                                            <option value="{{ $p->id }}">{{ $p->name }}</option>
+                                                        @endforeach
+                                                    </select>
+
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label class="form-control-label" for="kota">kota</label>
+                                                    <select class="form-control" id="kota" name="kota"
+                                                        data-toggle="select" required>
+                                                        {{-- <option value="">Pilih Kota</option> --}}
+                                                        {{-- @foreach ($kota as $k)
                                                         <option value="{{ $k->id }}">{{ $k->name }}</option>
                                                     @endforeach --}}
-                                                </select>
-                                                <div class="valid-feedback">
-                                                    Looks good!
+                                                    </select>
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4 mb-3">
+                                                    <label class="form-control-label" for="kecamatan">kecamatan</label>
+                                                    <select class="form-control" id="kecamatan" name="kecamatan"
+                                                        data-toggle="select" required>
+
+                                                    </select>
+                                                    <div class="valid-feedback">
+                                                        Looks good!
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-4 mb-3">
-                                                <label class="form-control-label" for="kecamatan">kecamatan</label>
-                                                <select class="form-control" id="kecamatan" name="kecamatan"
-                                                    data-toggle="select" required>
+                                        @endif
+                                        @if ($loker->profile_image === 1)
+                                            <div class="form-row">
+                                                <div class="col-md-4 mb-3">
+                                                    <label class="form-control-label"
+                                                        for="validationCustom01">Photo</label>
+                                                    <input type="file" class="form-control" id="validationCustom01"
+                                                        placeholder="First name" value="Mark" required>
 
-                                                </select>
-                                                <div class="valid-feedback">
-                                                    Looks good!
                                                 </div>
                                             </div>
-                                        </div>
-                                    @endif
-                                    @if ($loker->profile_image === 1)
-                                        <div class="form-row">
-                                            <div class="col-md-4 mb-3">
-                                                <label class="form-control-label" for="validationCustom01">Photo</label>
-                                                <input type="file" class="form-control" id="validationCustom01"
-                                                    placeholder="First name" value="Mark" required>
-
-                                            </div>
-                                        </div>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    @if ($loker->resume === 1)
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <br>
-                                <h3 style="color: #2e0e00">CV atau Resume</h3>
-                            </div>
-                            <div class="col-lg-9">
-
-                                <div class="form-row">
-                                    <div class="col-md-4 mb-3">
-                                        <input type="file" class="form-control" id="validationCustom01"
-                                            placeholder="First name" value="Mark" required>
-
+                                        @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    @endif
-                    @if ($loker->cv === 1)
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <br>
-                                <h3 style="color: #2e0e00">Cover Letter</h3>
-                            </div>
-                            <div class="col-lg-9">
+                        @if ($loker->resume === 1)
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <br>
+                                    <h3 style="color: #2e0e00">CV atau Resume</h3>
+                                </div>
+                                <div class="col-lg-9">
 
-                                <div class="form-row">
-                                    <div class="col-md-12 mb-3">
-                                        <textarea type="text" class="form-control" id="validationCustom01" placeholder="First name" required
-                                            style="width: 100%; height: 200px;"></textarea>
+                                    <div class="form-row">
+                                        <div class="col-md-4 mb-3">
+                                            <input type="file" class="form-control" id="validationCustom01"
+                                                placeholder="First name" value="Mark" required>
 
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endif
-                    @if ($loker->tac === 1)
-                        <hr>
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <br>
-                                <h3 style="color: #2e0e00">Syarat dan Ketentuan</h3>
-                            </div>
-                            <div class="col-lg-9">
+                        @endif
+                        @if ($loker->cv === 1)
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <br>
+                                    <h3 style="color: #2e0e00">Cover Letter</h3>
+                                </div>
+                                <div class="col-lg-9">
 
-                                <div class="form-row">
-                                    <div class="col-md-12 mb-3">
-                                        <textarea type="text" class="form-control" id="validationCustom01" placeholder="First name" required
-                                            style="width: 100%; height: 900px;">Syarat dan
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-3">
+                                            <textarea type="text" class="form-control" id="validationCustom01" placeholder="First name" required
+                                                style="width: 100%; height: 200px;"></textarea>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        @if ($loker->tac === 1)
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <br>
+                                    <h3 style="color: #2e0e00">Syarat dan Ketentuan</h3>
+                                </div>
+                                <div class="col-lg-9">
+
+                                    <div class="form-row">
+                                        <div class="col-md-12 mb-3">
+                                            <textarea type="text" class="form-control" id="validationCustom01" placeholder="First name" required
+                                                style="width: 100%; height: 900px;">Syarat dan
                                         Ketentuan (“Syarat dan Ketentuan”) ini dan segala peraturan atau kebijakan lain yang
                                         tersedia pada aplikasi Sribuu merupakan perjanjian-perjanjian yang mengikat
                                         berdasarkan Hukum yang Berlaku antara Pengguna dan PT Maju Bersama Alia
@@ -265,31 +261,33 @@
                                         “Anda” atau “Pengguna” berarti pihak yang terdaftar sebagai pelanggan Aplikasi untuk
                                         menggunakan Layanan yang disediakan di dalam Aplikasi.</textarea>
 
-                                    </div>
-                                    <div class="custom-control custom-checkbox mb-3">
-                                        <input class="custom-control-input" id="invalidCheck" type="checkbox"
-                                            value="" required>
-                                        <label class="custom-control-label" for="invalidCheck">Setuju dengan Syarat dan
-                                            Ketentuan</label>
-                                        <div class="invalid-feedback">
-                                            You must agree before submitting.
+                                        </div>
+                                        <div class="custom-control custom-checkbox mb-3">
+                                            <input class="custom-control-input" id="invalidCheck" type="checkbox"
+                                                value="" required>
+                                            <label class="custom-control-label" for="invalidCheck">Setuju dengan Syarat
+                                                dan
+                                                Ketentuan</label>
+                                            <div class="invalid-feedback">
+                                                You must agree before submitting.
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    @endif
-                    <div class="row justify-content-center d-flex">
-                        <button class="btn btn-primary">Simpan</button>
-                        <button class="btn btn-secondary">Cancel</button>
-                    </div>
+                        @endif
+        </form>
+        <div class="row justify-content-center d-flex">
+            <button class="btn btn-primary">Simpan</button>
+            <button class="btn btn-secondary">Cancel</button>
+        </div>
 
-                </div>
+        </div>
 
-            </div>
+        </div>
 
-            <br>
-            <hr>
+        <br>
+        <hr>
 
         </div>
     </section>

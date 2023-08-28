@@ -15,7 +15,14 @@
                                 <div class="mt-7">
 
                                 </div>
-                                <h1 class="display-2 text-white font-weight-bold mb-0">SELAMAT DATANG !!</h1>
+                                @if (Auth::check())
+                                    <h1 class="display-2 text-white font-weight-bold mb-0">SELAMAT DATANG
+                                        {{ Auth::user()->name }}!!
+                                    @else
+                                        <h1 class="display-2 text-white font-weight-bold mb-0">SELAMAT DATANG!!
+                                @endif
+
+                                </h1>
                                 <h2 class="display-4 text-white font-weight-light">Silahkan lihat lowongan kerja yang
                                     tersedia.</h2>
                                 <p class="text-white mt-4">Jordan Bakery selalu berupaya Mengusahakan kesejahteraan
