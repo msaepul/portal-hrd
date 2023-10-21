@@ -127,7 +127,8 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                 </div>
-                <input class="form-control" placeholder="Name" type="text" id="name" name="name">
+                <input class="form-control" placeholder="Masukan Nama Lengkap" type="text" id="name"
+                    name="name">
             </div>
         </div>
         <div class="form-group">
@@ -135,7 +136,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="fas fa-mobile-alt"></i></span>
                 </div>
-                <input class="form-control" placeholder="081xxxxxx" type="nomor" id="nomor" name="nomor">
+                <input class="form-control" placeholder="No HP 081xxxxxx" type="nomor" id="nomor" name="nomor">
             </div>
         </div>
         <div class="form-group">
@@ -151,7 +152,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                 </div>
-                <input class="form-control" placeholder="Confirm Password" type="password" name="password">
+                <input class="form-control" placeholder="Masukan Sandi" type="password" name="password">
 
             </div>
         </div>

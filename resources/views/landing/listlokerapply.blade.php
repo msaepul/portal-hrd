@@ -33,18 +33,15 @@
                                 @endif
 
                                 </h1>
-                                <h2 class="display-4 text-white font-weight-light">Silahkan lihat lowongan kerja yang
-                                    tersedia.</h2>
+
                                 <p class="text-white mt-4">Jordan Bakery selalu berupaya Mengusahakan kesejahteraan
                                     karyawan dan memberkati lingkungan di manapun berada.
 
                                     .</p>
                                 <div class="mt-5">
                                     @auth
-                                        <a href="{{ route('listlokerapply') }}" class="btn btn-secondary text-dark">Daftar
-                                            Lowongan
-                                            yang
-                                            telah dilamar</a>
+                                        <a href="{{ route('index') }}" class="btn btn-secondary text-dark">Kembali ke Halaman
+                                            Awal</a>
                                     @endauth
 
 
@@ -64,7 +61,7 @@
                 <div class="col-lg-8 text-center">
                     <br>
 
-                    <h2 class="display-3" style="color: #2e0e00">Pilih Lokasi Cabang Perusahaan</h2>
+                    <h2 class="display-3" style="color: #2e0e00">Lokasi Cabang Perusahaan yang telah dilamar</h2>
                     <p class="lead">
                     <div class="row d-flex justify-content-between">
                         <div class="row"></div>
@@ -80,36 +77,33 @@
                     <br>
                     <div class="row">
                         @foreach ($loker as $l)
-                            <div class="col-lg-6">
-                                <div class="card card-lift--hover shadow border-0" id="{{ getNameCabang($l->id_cabang) }}">
-                                    <a href="{{ route('landingloker', ['id' => $l->id]) }}" class="card-body py-5"
-                                        style="display: block; text-decoration: none; position: relative;">
-                                        <div class="icon icon-shape bg-gradient-primary text-white rounded-circle mb-4">
-                                            <i class="ni ni-check-bold"></i>
-                                        </div>
-                                        <h4 class="h3 text-primary text-uppercase">{{ getPTCabang($l->id_cabang) }}</h4>
-                                        <h5 class="h5 text-primary text-uppercase">{{ getNameDept($l->id_dept) }}</h5>
-                                        <p class="description mt-3">
-                                            {!! custom_str_limit($l->desc_job) !!}
-                                        </p>
-                                        <div>
-                                            @foreach ($l->id_skill as $idSkill)
-                                                <span
-                                                    class="badge badge-pill badge-primary">{{ getNameSkill($idSkill) }}</span>
-                                            @endforeach
-                                        </div>
-                                        <div class="text-muted"
-                                            style="font-style: bold; font-size: 12px; position: absolute; bottom: 10px; right: 15px;">
-                                            Berlaku hingga {{ formatDateToIndonesian($l->end_date) }}
-                                        </div>
+                            <div class="col-lg-12">
+                                <span class="card card-lift--hover shadow border-2" id="{{ getNameCabang($l->id_cabang) }}"
+                                    disabled>
+
+                                    <div class="icon icon-shape bg-gradient-primary text-white rounded-circle mb-4">
+                                        <i class="ni ni-check-bold"></i>
+                                    </div>
+                                    <h4 class="h3 text-primary text-uppercase">{{ getPTCabang($l->id_cabang) }}</h4>
+                                    <p class="description mt-3">
+                                        {!! $l->desc_job !!}
+                                    </p>
+
+                                    <div>
+                                        @foreach ($l->id_skill as $idSkill)
+                                            <span class="badge badge-pill badge-primary">{{ getNameSkill($idSkill) }}</span>
+                                        @endforeach
 
 
-                                    </a>
-                                </div>
+                                    </div>
+
+                                </span>
+
+
+
                             </div>
                         @endforeach
                     </div>
-
 
                 </div>
     </section>

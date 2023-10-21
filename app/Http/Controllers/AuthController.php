@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Loker;
+use App\Models\Apply;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
@@ -19,7 +21,9 @@ class AuthController extends Controller
 
     public function dashboard()
     {
-        return view('dashboard');
+        $lowongan = Loker::where('id_cabang',auth::user()->id_cabang)->where('status',1)->count();
+        $totalpelamar = Apply::where('id_cabang',auth::user()->id_cabang)->count();
+        return view('dashboard',compact('lowongan','totalpelamar'));
     }
 
 
@@ -47,8 +51,9 @@ class AuthController extends Controller
 
     public function logout()
     {
-        Auth::logout();
-        return redirect()->route('login');
+        Auth::logout(); // Logout pengguna
+        Session::flash('success', 'Anda telah berhasil logout.'); // Pesan sukses logout
+        return redirect('/'); // Redirect ke halaman login atau halaman lain yang sesuai
     }
 
 

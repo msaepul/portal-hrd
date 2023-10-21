@@ -121,7 +121,7 @@
                                             type="checkbox" value="1"
                                             @if ($loker->gender == 1) checked @endif>
                                         <!-- Tandai checkbox jika data gender bernilai 1 -->
-                                        <label class="custom-control-label" for="gender">Gender</label>
+                                        <label class="custom-control-label" for="gender">Jenis Kelamin</label>
                                     </div>
 
                                     <!-- Checkbox untuk Date Of Birth -->
@@ -130,7 +130,7 @@
                                             type="checkbox" value="1"
                                             @if ($loker->date_birth == 1) checked @endif>
                                         <!-- Tandai checkbox jika data date_birth bernilai 1 -->
-                                        <label class="custom-control-label" for="date_birth">Date Of Birth</label>
+                                        <label class="custom-control-label" for="date_birth">Tempat Tanggal Lahir</label>
                                     </div>
 
                                     <!-- Checkbox untuk Country -->
@@ -139,7 +139,7 @@
                                             type="checkbox" value="1"
                                             @if ($loker->country == 1) checked @endif>
                                         <!-- Tandai checkbox jika data country bernilai 1 -->
-                                        <label class="custom-control-label" for="country">Country</label>
+                                        <label class="custom-control-label" for="country">Asal Tempat</label>
                                     </div>
                                 </div>
 
@@ -156,6 +156,27 @@
                                             @if ($loker->profile_image == 1) checked @endif>
                                         <!-- Tandai checkbox jika data profile_image bernilai 1 -->
                                         <label class="custom-control-label" for="profile_image">Profile Image</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3 ml-3">
+                                        <input class="custom-control-input" id="kartu_keluarga" name="kartu_keluarga"
+                                            type="checkbox" value="1"
+                                            @if ($loker->kartu_keluarga == 1) checked @endif>
+                                        <!-- Tandai checkbox jika data kartu_keluarga bernilai 1 -->
+                                        <label class="custom-control-label" for="kartu_keluarga">Kartu Keluarga</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3 ml-3">
+                                        <input class="custom-control-input" id="ktp" name="ktp"
+                                            type="checkbox" value="1"
+                                            @if ($loker->ktp == 1) checked @endif>
+                                        <!-- Tandai checkbox jika data ktp bernilai 1 -->
+                                        <label class="custom-control-label" for="ktp">KTP</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3 ml-3">
+                                        <input class="custom-control-input" id="vaksin" name="vaksin"
+                                            type="checkbox" value="1"
+                                            @if ($loker->vaksin == 1) checked @endif>
+                                        <!-- Tandai checkbox jika data vaksin bernilai 1 -->
+                                        <label class="custom-control-label" for="vaksin">Vaksin</label>
                                     </div>
 
                                     <!-- Checkbox untuk Resume -->

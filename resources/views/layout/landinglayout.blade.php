@@ -98,6 +98,10 @@
                                 <span style="color: rgba(47, 25, 4, 0.837);">Login</span>
                             </a>
                         @else
+                            <a class="nav-link" href="{{ route('logout') }}" class="btn btn-primary">
+                                <i class="fas fa-sign-in-alt mr-2" style="color: #2e0e00;"></i>
+                                <span style="color: rgba(47, 25, 4, 0.837);">Logout</span>
+                            </a>
                         @endguest
                     </li>
                 </ul>

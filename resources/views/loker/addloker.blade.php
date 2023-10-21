@@ -87,14 +87,14 @@
                     <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-control-label" for="example3cols1Input">Start Date</label>
+                                <label class="form-control-label" for="example3cols1Input">Tanggal Lamaran dibuka</label>
                                 <input type="date" name="start_date" class="form-control" id="example3cols1Input"
                                     placeholder="One of three cols">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-control-label" for="example3cols2Input">End Date</label>
+                                <label class="form-control-label" for="example3cols2Input">Tanggal Lamaran ditutup</label>
                                 <input type="date" name="end_date" class="form-control" id="example3cols2Input"
                                     placeholder="One of three cols">
                             </div>
@@ -108,19 +108,19 @@
                                     <div class="custom-control custom-checkbox mb-3 ml-3">
                                         <input class="custom-control-input" id="gender" name="gender"
                                             type="checkbox" value="1">
-                                        <label class="custom-control-label" for="gender">Gender</label>
+                                        <label class="custom-control-label" for="gender">Jenis Kelamin</label>
                                     </div>
                                     <div class="custom-control custom-checkbox mb-3 ml-3">
                                         <!-- Tambahkan class "ml-3" di sini -->
                                         <input class="custom-control-input" id="date_birth" name="date_birth"
                                             type="checkbox" value="1">
-                                        <label class="custom-control-label" for="date_birth">Date Of Birth</label>
+                                        <label class="custom-control-label" for="date_birth">Tanggal Lahir</label>
                                     </div>
                                     <div class="custom-control custom-checkbox mb-3 ml-3">
                                         <!-- Tambahkan class "ml-3" di sini -->
                                         <input class="custom-control-input" id="country" name="country"
                                             type="checkbox" value="1">
-                                        <label class="custom-control-label" for="country">Country</label>
+                                        <label class="custom-control-label" for="country">Asal Tempat</label>
                                     </div>
                                 </div>
 
@@ -128,31 +128,46 @@
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="form-control-label" for="example3cols1Input">Section Visibility</label>
+                                <label class="form-control-label" for="example3cols1Input">Data yang ingin
+                                    ditampilkan</label>
                                 <div class="row">
                                     <div class="custom-control custom-checkbox mb-3 ml-3">
                                         <input class="custom-control-input" id="profile_image" name="profile_image"
                                             type="checkbox" value="1">
-                                        <label class="custom-control-label" for="profile_image">Profile Image</label>
+                                        <label class="custom-control-label" for="profile_image">Pas Photo</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3 ml-3">
+                                        <input class="custom-control-input" id="kartu_keluarga" name="kartu_keluarga"
+                                            type="checkbox" value="1">
+                                        <label class="custom-control-label" for="kartu_keluarga">Kartu Keluarga</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3 ml-3">
+                                        <input class="custom-control-input" id="ktp" name="ktp"
+                                            type="checkbox" value="1">
+                                        <label class="custom-control-label" for="ktp">KTP</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3 ml-3">
+                                        <input class="custom-control-input" id="vaksin" name="vaksin"
+                                            type="checkbox" value="1">
+                                        <label class="custom-control-label" for="vaksin">vaksin</label>
                                     </div>
                                     <div class="custom-control custom-checkbox mb-3 ml-3">
                                         <!-- Tambahkan class "ml-3" di sini -->
                                         <input class="custom-control-input" id="resume" name="resume"
                                             type="checkbox" value="1">
-                                        <label class="custom-control-label" for="resume">Resume</label>
+                                        <label class="custom-control-label" for="resume">Daftar Riwayat Hidup</label>
                                     </div>
                                     <div class="custom-control custom-checkbox mb-3 ml-3">
                                         <!-- Tambahkan class "ml-3" di sini -->
                                         <input class="custom-control-input" id="cv" name="cv"
                                             type="checkbox" value="1">
-                                        <label class="custom-control-label" for="cv">Cover Letter</label>
+                                        <label class="custom-control-label" for="cv">Surat Pengantar</label>
                                     </div>
                                     <div class="custom-control custom-checkbox mb-3 ml-3">
                                         <!-- Tambahkan class "ml-3" di sini -->
                                         <input class="custom-control-input" id="tac" name="tac"
                                             type="checkbox" value="1">
-                                        <label class="custom-control-label" for="tac">Terms And
-                                            Conditions</label>
+                                        <label class="custom-control-label" for="tac">Syarat dan Ketentuan</label>
                                     </div>
                                 </div>
 

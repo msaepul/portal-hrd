@@ -65,25 +65,56 @@
                                     <th>No</th>
                                     <th>ID Loker</th>
                                     <th>Nama User</th>
+                                    <th>Nomor Telepon</th>
                                     <th>TTL</th>
                                     <th>Resume</th>
                                     <th>CV</th>
+                                    <th>photo</th>
                                     <th>status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
 
-                                <tr>
-                                    <td>No</td>
-                                    <td>ID Loker</td>
-                                    <td>Nama User</td>
-                                    <td>TTL</td>
-                                    <td>Resume</td>
-                                    <td>CV</td>
-                                    <td>status</td>
-                                    <td>Action</td>
-                                </tr>
+                                @foreach ($apply as $row)
+                                    <tr>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $row['id_loker'] }}</td>
+                                        <td>{{ getNameUser($row['id_user']) }}</td>
+                                        <td>{{ getNumberUser($row['id_user']) }}</td>
+
+                                        <td>{{ $row['birth'] . ' (' . getUmur($row->birth) . ')' }}</td>
+                                        <td>{{ $row['cover'] }}</td>
+                                        <td>
+                                            <a data-fancybox="gallery" data-type="iframe"
+                                                href="{{ asset('uploads/' . $row['id_loker'] . '/cv/' . $row['cv']) }}">
+                                                <i class="fas fa-file fa-2x"></i>
+                                                <!-- Gantilah dengan kelas ikon yang sesuai -->
+                                            </a>
+                                        </td>
+
+
+                                        <td>
+                                            <a data-fancybox="gallery"
+                                                href="{{ asset('uploads/' . $row['id_loker'] . '/photo/' . $row['photo']) }}">
+                                                <i class="fas fa-image fa-2x"></i>
+                                                <!-- Gantilah dengan kelas ikon yang sesuai -->
+                                            </a>
+                                        </td>
+
+
+                                        <td><button class="btn btn-sm btn-secondary">Draft</button>
+
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('loker.download', ['id' => $row['id']]) }}"
+                                                class="btn btn-sm btn-success">Unduh Semua Berkas</a>
+
+                                        </td>
+
+
+                                    </tr>
+                                @endforeach
 
                             </tbody>
                         </table>

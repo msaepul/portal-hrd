@@ -18,6 +18,7 @@ use App\Http\Controllers\Notif;
 */
 
 Route::get('/', [LokerController::class, 'index'])->name('index');
+Route::get('/listloker', [LokerController::class, 'listapply'])->name('listlokerapply');
 Route::get('/lokers/{id}', [LokerController::class, 'detailLandingLoker'])->name('landingloker');
 
 
@@ -38,10 +39,11 @@ Route::get('/otpresend', [Notif::class, 'resendOtp'])->name('resendotp');
 Route::middleware(['auth'])->group(function () {
 
 Route::get('/lokers/{id}/apply', [LokerController::class, 'applyLandingLoker'])->name('applyloker');
+Route::post('/lokers/store', [LokerController::class, 'ApplyLokerStore'])->name('applylokerstore');
 Route::post('getkota', [LokerController::class, 'getkota'])->name('getkota');
 Route::post('getkecamatan', [LokerController::class, 'getkecamatan'])->name('getkecamatan');
 Route::get('/dashboard', [AuthController::class, 'dashboard'])->name('dashboard');
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 //masterdata departemen
 Route::get('/Masterdata/departemen', [MasterDataController::class, 'showListDept'])->name('masterdata.dept');
@@ -71,7 +73,7 @@ Route::get('/loker/updates/{id}', [LokerController::class, 'updatestatus'])->nam
 Route::get('/loker/edit/{id}', [LokerController::class, 'showEditloker'])->name('loker.edit');
 Route::put('/loker/update/{id}', [LokerController::class, 'editLokerstore'])->name('loker.edit.action');
 Route::get('/loker/listapply', [LokerController::class, 'showListApply'])->name('loker.listapply');
-
+Route::get('/loker/{id}', [LokerController::class, 'compressAndDownload'])->name('loker.download');
 
 
 });

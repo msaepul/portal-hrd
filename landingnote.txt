@@ -1,0 +1,5 @@
+Progress HRD Loker
+1. Setting agar user yang daftar (pelamar) itu bisa login, dan hanya redirect ke landing page saja
+2. Munculkan list yang sudah diapply
+3. Lowongan yang sudah diapply tidak muncul
+

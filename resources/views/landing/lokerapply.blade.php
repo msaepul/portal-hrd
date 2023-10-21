@@ -32,8 +32,10 @@
         </div>
     </div>
     <section class="py-100 section-nucleo-icons bg-white overflow-hidden">
-        <form action="{{ route('addloker.store') }}" method="POST">
+        <form action="{{ route('applylokerstore') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" value="{{ $loker->id_loker }}" name="idloker">
+            <input type="hidden" value="{{ $loker->id_cabang }}" name="cabang">
             <div class="container">
                 <div class="row">
                     <div class="container">
@@ -41,7 +43,7 @@
                         <div class="row">
                             <div class="col-lg-3">
                                 <br>
-                                <h3 style="color: #2e0e00">Data Pribadi</h3>
+                                <h3 style="color: #2e0e00">Data Pribadi </h3>
                             </div>
                             <div class="col-lg-9">
                                 <br>
@@ -95,7 +97,7 @@
                                             <label class="form-control-label" for="validationCustom01">Tempat, Tanggal
                                                 Lahir</label>
                                             <input type="date" class="form-control mb-3" id="validationCustom01"
-                                                placeholder="First name" required>
+                                                name="birth" placeholder="First name" required>
                                             <div class="form-row">
                                                 <div class="col-md-4 mb-3">
                                                     <label class="form-control-label" for="provinsi">Provinsi</label>
@@ -103,7 +105,8 @@
                                                         data-toggle="select" required>
                                                         <option value="" disabled selected>Pilih Provinsi</option>
                                                         @foreach ($provinsi as $p)
-                                                            <option value="{{ $p->id }}">{{ $p->name }}</option>
+                                                            <option value="{{ $p->id }}">{{ $p->name }}
+                                                            </option>
                                                         @endforeach
                                                     </select>
 
@@ -139,7 +142,7 @@
                                                     <label class="form-control-label"
                                                         for="validationCustom01">Photo</label>
                                                     <input type="file" class="form-control" id="validationCustom01"
-                                                        placeholder="First name" value="Mark" required>
+                                                        name="photo" placeholder="First name" value="Mark" required>
 
                                                 </div>
                                             </div>
@@ -148,7 +151,7 @@
                                 </div>
                             </div>
                         </div>
-                        @if ($loker->resume === 1)
+                        @if ($loker->resume == 1)
                             <hr>
                             <div class="row">
                                 <div class="col-lg-3">
@@ -159,7 +162,64 @@
 
                                     <div class="form-row">
                                         <div class="col-md-4 mb-3">
-                                            <input type="file" class="form-control" id="validationCustom01"
+                                            <input type="file" class="form-control" id="cv" name="cv"
+                                                placeholder="First name" value="Mark" required>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        @if ($loker->kartu_keluarga == 1)
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <br>
+                                    <h3 style="color: #2e0e00">Scan Kartu Keluarga</h3>
+                                </div>
+                                <div class="col-lg-9">
+
+                                    <div class="form-row">
+                                        <div class="col-md-4 mb-3">
+                                            <input type="file" class="form-control" id="kartu_keluarga"
+                                                name="kartu_keluarga" required>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        @if ($loker->ktp == 1)
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <br>
+                                    <h3 style="color: #2e0e00">Scan KTP</h3>
+                                </div>
+                                <div class="col-lg-9">
+
+                                    <div class="form-row">
+                                        <div class="col-md-4 mb-3">
+                                            <input type="file" class="form-control" id="ktp" name="ktp"
+                                                placeholder="First name" value="Mark" required>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                        @if ($loker->vaksin == 1)
+                            <hr>
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <br>
+                                    <h3 style="color: #2e0e00">Kartu vaksin</h3>
+                                </div>
+                                <div class="col-lg-9">
+
+                                    <div class="form-row">
+                                        <div class="col-md-4 mb-3">
+                                            <input type="file" class="form-control" id="vaksin" name="vaksin"
                                                 placeholder="First name" value="Mark" required>
 
                                         </div>
@@ -178,7 +238,7 @@
 
                                     <div class="form-row">
                                         <div class="col-md-12 mb-3">
-                                            <textarea type="text" class="form-control" id="validationCustom01" placeholder="First name" required
+                                            <textarea type="text" class="form-control" id="cover" name="cover" placeholder="First name" required
                                                 style="width: 100%; height: 200px;"></textarea>
 
                                         </div>

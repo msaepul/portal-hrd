@@ -28,6 +28,7 @@ class Loker extends Model
         'tac',
         'status',
         'id_skill',
+        'kartu_keluarga','vaksin','ktp',
     ];
     public static function generateNomor()
     {
