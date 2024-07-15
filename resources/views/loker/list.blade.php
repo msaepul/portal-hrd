@@ -69,8 +69,9 @@
                                     <th>Nama Departemen</th>
                                     <th>Tanggal Dibuka</th>
                                     <th>Tanggal Selesai</th>
-                                    <th>Persyaratan</th>
+
                                     <th>status</th>
+                                    <th>Persyaratan</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -82,7 +83,7 @@
                                         <td>{{ getNameDept($loker->id_dept) }}</td>
                                         <td>{{ $loker->start_date }}</td>
                                         <td>{{ $loker->end_date }}</td>
-                                        <td>{!! $loker->require_job !!}</td>
+
                                         <td>
                                             @if ($loker->status == 1)
                                                 <span class="badge badge-success">Aktif</span>
@@ -90,6 +91,7 @@
                                                 <span class="badge badge-warning">Tidak aktif</span>
                                             @endif
                                         </td>
+                                        <td>List Pelamar</td>
                                         <td>
                                             <a href="{{ route('loker.edit', $loker->id) }}"
                                                 class="btn btn-sm btn-primary"><i class="far fa-edit"

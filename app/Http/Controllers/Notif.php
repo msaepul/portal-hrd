@@ -13,11 +13,11 @@ class Notif extends Controller
 {
     public function sendWhatsApp(Request $request)
     {
-
+        $nomor = auth::user()->nomor;
         $otp = mt_rand(100000, 999999);
-        $apiKey = "b5991fddbad1729718b2fc7f86cff354c8ffe9bb";
-        $recipient = "083820073252"; // atau $recipient = "Group Chat Name";
-        $message = "JANGAN MEMBERITAHU KODE RAHASIA INI KE SIAPAPUN. WASPADA TERHADAP KASUS PENIPUAN! Kode Verifikasi untuk daftar di website : ".$otp;
+        $apiKey = "1527458ab5ae96bb107f0e31113d029b6e79a5d3";
+        $recipient = $nomor; // atau $recipient = "Group Chat Name";
+        $message = "JANGAN MEMBERITAHU KODE RAHASIA INI KE SIAPAPUN. WASPADA TERHADAP KASUS PENIPUAN! Kode Verifikasi untuk daftar di website : " . $otp;
 
         $url = 'https://starsender.online/api/sendText?message=' . rawurlencode($message) . '&tujuan=' . rawurlencode($recipient . '@s.whatsapp.net');
 
@@ -46,8 +46,8 @@ class Notif extends Controller
     public function otp()
     {
 
-    $user= Auth::user();
-      return view('auth.otp',compact('user'));
+        $user = Auth::user();
+        return view('auth.otp', compact('user'));
     }
     public function verifyOtp(Request $request)
     {
@@ -69,22 +69,21 @@ class Notif extends Controller
         }
     }
     public function resendOtp(Request $request)
-{
-    $nomor = auth::user()->nomor;
-    // Generate new OTP
-    $newOtp = mt_rand(100000, 999999);
+    {
+        $nomor = auth::user()->nomor;
+        // Generate new OTP
+        $newOtp = mt_rand(100000, 999999);
 
-    // Update the OTP in the session
-    Session::put('otp', $newOtp);
+        // Update the OTP in the session
+        Session::put('otp', $newOtp);
 
-    $apiKey = "b5991fddbad1729718b2fc7f86cff354c8ffe9bb";
-    $recipient = $nomor; // atau $recipient = "Group Chat Name";
-    $message = "JANGAN MEMBERITAHU KODE RAHASIA INI KE SIAPAPUN. WASPADA TERHADAP KASUS PENIPUAN! Kode Verifikasi untuk daftar di website : " . $newOtp;
+        $apiKey = "1527458ab5ae96bb107f0e31113d029b6e79a5d3";
+        $recipient = $nomor; // atau $recipient = "Group Chat Name";
+        $message = "JANGAN MEMBERITAHU KODE RAHASIA INI KE SIAPAPUN. WASPADA TERHADAP KASUS PENIPUAN! Kode Verifikasi untuk daftar di website : " . $newOtp;
 
-    $url = 'https://starsender.online/api/sendText?message=' . rawurlencode($message) . '&tujuan=' . rawurlencode($recipient . '@s.whatsapp.net');
+        $url = 'https://starsender.online/api/sendText?message=' . rawurlencode($message) . '&tujuan=' . rawurlencode($recipient . '@s.whatsapp.net');
 
-    $response = Http::withHeaders(['apikey' => $apiKey])->post($url);
-    return redirect()->route('otp')->with('success', 'OTP has been resent');
-}
-
+        $response = Http::withHeaders(['apikey' => $apiKey])->post($url);
+        return redirect()->route('otp')->with('success', 'OTP has been resent');
+    }
 }

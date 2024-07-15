@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
+
 class Loker extends Model
 {
     use SoftDeletes;
@@ -28,7 +29,7 @@ class Loker extends Model
         'tac',
         'status',
         'id_skill',
-        'kartu_keluarga','vaksin','ktp',
+        'kartu_keluarga', 'vaksin', 'ktp', 'ijazah', 'pengalaman', 'lamaran'
     ];
     public static function generateNomor()
     {
@@ -38,7 +39,7 @@ class Loker extends Model
         $cabang = getSingkatanCabang(Auth::user()->id_cabang);
 
         // Ambil nomor terakhir dari bulan ini
-        $lastDocument = Loker::where('id_loker', 'like', $cabang.'/'. $currentYear  . $currentMonth .'/%')
+        $lastDocument = Loker::where('id_loker', 'like', $cabang . '/' . $currentYear  . $currentMonth . '/%')
             ->orderBy('id_loker', 'desc')
             ->first();
 
@@ -50,6 +51,6 @@ class Loker extends Model
             $newNumber = str_pad((int) $lastNumber + 1, 2, '0', STR_PAD_LEFT);
         }
 
-        return $cabang.'/'. $currentYear  .$currentMonth .'/' . $newNumber;
+        return $cabang . '/' . $currentYear  . $currentMonth . '/' . $newNumber;
     }
 }

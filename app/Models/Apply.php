@@ -13,7 +13,7 @@ class Apply extends Model
 
     protected $fillable = [
         'id', 'id_loker', 'id_user', 'id_cabang', 'resume',
-        'cv', 'birth','kartu_keluarga','vaksin','ktp', 'id_provinsi', 'id_kota', 'id_kecamatan',
+        'cv', 'birth', 'kartu_keluarga', 'vaksin', 'ktp', 'lamaran', 'ijazah', 'pengalaman', 'id_provinsi', 'id_kota', 'id_kecamatan',
         'cover', 'created_at', 'updated_at', 'deleted_at', 'status'
     ];
 }

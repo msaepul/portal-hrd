@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\User;
 use App\Models\Loker;
 use App\Models\Apply;
@@ -21,9 +22,9 @@ class AuthController extends Controller
 
     public function dashboard()
     {
-        $lowongan = Loker::where('id_cabang',auth::user()->id_cabang)->where('status',1)->count();
-        $totalpelamar = Apply::where('id_cabang',auth::user()->id_cabang)->count();
-        return view('dashboard',compact('lowongan','totalpelamar'));
+        $lowongan = Loker::where('id_cabang', auth::user()->id_cabang)->where('status', 1)->count();
+        $totalpelamar = Apply::where('id_cabang', auth::user()->id_cabang)->count();
+        return view('dashboard', compact('lowongan', 'totalpelamar'));
     }
 
 
@@ -38,10 +39,10 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             $user = auth()->user();
-            if ($user->level === 1) {
+            if ($user->level == 1) {
                 session(['cabang' => $user->cabang, 'dept' => $user->dept, 'id' => $user->id]);
                 return redirect('dashboard');
-            } elseif ($user->level === 2) {
+            } elseif ($user->level == 2) {
                 return redirect('/');
             }
         }
@@ -96,7 +97,7 @@ class AuthController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:8',
         ]);
-        $nomor= $request->nomor;
+        $nomor = $request->nomor;
 
         // Generate OTP
         $otp = mt_rand(100000, 999999);
@@ -130,5 +131,4 @@ class AuthController extends Controller
             return back()->withInput()->withErrors(['message' => 'Failed to send OTP']);
         }
     }
-
 }

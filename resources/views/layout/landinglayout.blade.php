@@ -86,7 +86,7 @@
     <!-- Navbar -->
     <nav id="navbar-main" class="navbar navbar-horizontal navbar-main navbar-expand-lg navbar-dark bg-transparent">
         <div class="container d-flex align-items-center">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{ route('index') }}">
                 <img src="{{ asset('assets/img/brand/logo jordan.png') }}" style="width:15%; height:auto;">
             </a>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">

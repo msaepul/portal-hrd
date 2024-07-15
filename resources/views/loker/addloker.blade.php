@@ -101,7 +101,10 @@
                         </div>
                     </div>
                     <div class="row">
+
                         <div class="col-md-6">
+                            <input class="custom-control-input" id="select-all" type="checkbox">
+                            <label class="custom-control-label" for="select-all">Select All</label>
                             <div class="form-group">
                                 <label class="form-control-label" for="example3cols1Input">Ask Application For</label>
                                 <div class="row">
@@ -130,11 +133,29 @@
                             <div class="form-group">
                                 <label class="form-control-label" for="example3cols1Input">Data yang ingin
                                     ditampilkan</label>
+                                {{-- <div class="custom-control custom-checkbox mb-3 ml-3">
+                                </div> --}}
                                 <div class="row">
                                     <div class="custom-control custom-checkbox mb-3 ml-3">
                                         <input class="custom-control-input" id="profile_image" name="profile_image"
                                             type="checkbox" value="1">
                                         <label class="custom-control-label" for="profile_image">Pas Photo</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3 ml-3">
+                                        <input class="custom-control-input" id="lamaran" name="lamaran"
+                                            type="checkbox" value="1">
+                                        <label class="custom-control-label" for="lamaran">Lamaran</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3 ml-3">
+                                        <input class="custom-control-input" id="ijazah" name="ijazah"
+                                            type="checkbox" value="1">
+                                        <label class="custom-control-label" for="ijazah">Ijazah / Transkrip
+                                            Nilai</label>
+                                    </div>
+                                    <div class="custom-control custom-checkbox mb-3 ml-3">
+                                        <input class="custom-control-input" id="pengalaman" name="pengalaman"
+                                            type="checkbox" value="1">
+                                        <label class="custom-control-label" for="pengalaman">Pengalaman Kerja</label>
                                     </div>
                                     <div class="custom-control custom-checkbox mb-3 ml-3">
                                         <input class="custom-control-input" id="kartu_keluarga" name="kartu_keluarga"
@@ -230,6 +251,21 @@
     </script>
     <script>
         $('.js-example-basic-multiple').select2();
+    </script>
+    <script>
+        $(document).ready(function() {
+            // Select all checkboxes when the "Select All" checkbox is clicked
+            $("#select-all").change(function() {
+                $("input:checkbox").prop('checked', $(this).prop("checked"));
+            });
+
+            // Uncheck the "Select All" checkbox if any individual checkbox is unchecked
+            $("input:checkbox").change(function() {
+                if (!$(this).prop("checked")) {
+                    $("#select-all").prop('checked', false);
+                }
+            });
+        });
     </script>
 
 @endsection

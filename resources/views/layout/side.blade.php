@@ -40,11 +40,26 @@
                         <div class="collapse show" id="navbar-dashboards">
                             <ul class="nav nav-sm flex-column">
                                 <li class="nav-item">
-                                    <a href="{{ route('loker') }}" class="nav-link">Input Lowongan</a>
+                                    <a href="{{ route('addloker') }}" class="nav-link">Masukan Loker</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('loker.listapply') }}" class="nav-link">List
-                                        Pendaftar</a>
+                                    <a href="{{ route('loker') }}" class="nav-link">Daftar Loker</a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#navbar-pelamar" data-toggle="collapse" role="button"
+                            aria-expanded="true" aria-controls="navbar-pelamar">
+                            <i class="ni ni-shop text-primary"></i>
+                            <span class="nav-link-text">Data Pelamar</span>
+                        </a>
+                        <div class="collapse" id="navbar-pelamar">
+                            <ul class="nav nav-sm flex-column">
+
+                                <li class="nav-item">
+                                    <a href="{{ route('loker.listapply') }}" class="nav-link">Daftar Pelamar</a>
                                 </li>
                             </ul>
                         </div>
@@ -55,12 +70,14 @@
                 <h6 class="navbar-heading p-0 text-muted">Master Data</h6>
                 <hr class="my-1">
                 <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('masterdata.cabang') }}">
-                            <i class="ni ni-chart-pie-35 text-info"></i>
-                            <span class="nav-link-text">Cabang</span>
-                        </a>
-                    </li>
+                    @if (Auth::user()->id == 1)
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('masterdata.cabang') }}">
+                                <i class="ni ni-chart-pie-35 text-info"></i>
+                                <span class="nav-link-text">Cabang</span>
+                            </a>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('masterdata.dept') }}">
                             <i class="ni ni-chart-pie-35 text-info"></i>
@@ -73,12 +90,7 @@
                             <span class="nav-link-text">Skill</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="../../pages/calendar.html">
-                            <i class="ni ni-calendar-grid-58 text-red"></i>
-                            <span class="nav-link-text">Point Cek</span>
-                        </a>
-                    </li>
+
                 </ul>
             </div>
         </div>

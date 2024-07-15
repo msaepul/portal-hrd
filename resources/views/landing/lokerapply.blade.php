@@ -136,7 +136,7 @@
                                                 </div>
                                             </div>
                                         @endif
-                                        @if ($loker->profile_image === 1)
+                                        {{-- @if ($loker->profile_image === 1)
                                             <div class="form-row">
                                                 <div class="col-md-4 mb-3">
                                                     <label class="form-control-label"
@@ -146,12 +146,12 @@
 
                                                 </div>
                                             </div>
-                                        @endif
+                                        @endif --}}
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        @if ($loker->resume == 1)
+                        {{-- @if ($loker->resume == 1)
                             <hr>
                             <div class="row">
                                 <div class="col-lg-3">
@@ -226,7 +226,85 @@
                                     </div>
                                 </div>
                             </div>
-                        @endif
+                        @endif --}}
+                        <hr>
+                        <div class="row">
+                            <div class="col-lg-3">
+                                <br>
+                                <h3 style="color: #2e0e00">Berkas</h3>
+                            </div>
+                            <div class="col-lg-9">
+                                <div class="form-row">
+                                    @if ($loker->lamaran === 1)
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-control-label" for="Lamaran Kerja">Surat Lamaran
+                                                Kerja</label>
+                                            <input type="file" class="form-control" id="lamaran" name="lamaran"
+                                                placeholder="First name" value="Mark" required>
+
+                                        </div>
+                                    @endif
+                                    @if ($loker->profile_image === 1)
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-control-label" for="Pas Photo">Pas Photo</label>
+                                            <input type="file" class="form-control" id="photo" name="photo"
+                                                placeholder="First name" value="Mark" required>
+
+                                        </div>
+                                    @endif
+                                    @if ($loker->resume == 1)
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-control-label" for="CV atau Resume">CV atau Resume</label>
+                                            <input type="file" class="form-control" id="cv" name="cv"
+                                                placeholder="First name" value="Mark" required>
+
+                                        </div>
+                                    @endif
+                                    @if ($loker->kartu_keluarga == 1)
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-control-label" for="Pas Photo">Kartu Kelurga</label>
+                                            <input type="file" class="form-control" id="kartu_keluarga"
+                                                name="kartu_keluarga" placeholder="First name" value="Mark" required>
+
+                                        </div>
+                                    @endif
+                                    @if ($loker->ktp == 1)
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-control-label" for="KTP">KTP</label>
+                                            <input type="file" class="form-control" id="ktp" name="ktp"
+                                                placeholder="First name" value="Mark" required>
+
+                                        </div>
+                                    @endif
+                                    @if ($loker->ijazah == 1)
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-control-label" for="Ijazah / Transkrip Nilai">Ijazah /
+                                                Transkrip Nilai</label>
+                                            <input type="file" class="form-control" id="ijazah" name="ijazah"
+                                                placeholder="First name" value="Mark" required>
+
+                                        </div>
+                                    @endif
+                                    @if ($loker->pengalaman == 1)
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-control-label" for="pengalaman">Pengalaman
+                                                Kerja (pakelarin)</label>
+                                            <input type="file" class="form-control" id="pengalaman" name="pengalaman"
+                                                placeholder="First name" value="Mark" required>
+
+                                        </div>
+                                    @endif
+                                    @if ($loker->vaksin == 1)
+                                        <div class="col-md-6 mb-3">
+                                            <label class="form-control-label" for="vaksin">vaksin</label>
+                                            <input type="file" class="form-control" id="vaksin" name="vaksin"
+                                                placeholder="First name" value="Mark" required>
+
+                                        </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
                         @if ($loker->cv === 1)
                             <hr>
                             <div class="row">
